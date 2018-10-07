@@ -1,0 +1,8 @@
+Face Image
+width 42
+height 42
+source ./Images/Smile.png
+# when <isBad
+# source ./Images/Frown.png
+when <isDead
+source ./Images/Dead.png
