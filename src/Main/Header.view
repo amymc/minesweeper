@@ -6,9 +6,9 @@ mode score
 text 160
 
 Status
-# isDead <
+isDead <
 
 Counter
 mode time
-text <
+text <numMines
 # text 010

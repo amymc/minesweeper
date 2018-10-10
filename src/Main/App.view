@@ -6,3 +6,11 @@ flexBasis auto
 justifyContent center
 backgroundColor #008183
 Window
+# Header
+# # isDead <
+
+# Board
+# height <
+# width <
+# mines <
+# reveal <

@@ -4,26 +4,42 @@ const AppContext = React.createContext()
 export class AppProvider extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      grid: this.createGrid(),
-      isDead: false
-    }
-  }
-
-  createGrid = () => {
     const height = 8
     const width = 8
     const mines = 10
+    this.state = {
+      grid: this.createGrid(height, width, mines),
+      isDead: false,
+      mines,
+      height,
+      width
+    }
+  }
+
+  createGrid = (height, width, mines) => {
     let arr = []
     for (var i = 0; i < width; i++) {
       arr[i] = []
       for (var j = 0; j < height; j++) {
-        arr[i][j] = { x: i, y: j, isRevealed: false, isLosingCell: false }
+        arr[i][j] = {
+          x: i,
+          y: j,
+          isRevealed: false,
+          isLosingCell: false,
+          hasFlag: false
+        }
       }
     }
 
     this.placeMines(arr, mines)
     return arr
+  }
+
+  placeFlag = (e, cell) => {
+    e.preventDefault()
+    let updatedGrid = this.state.grid
+    updatedGrid[cell.x][cell.y].hasFlag = true
+    this.setState({ mines: this.state.mines - 1 })
   }
 
   placeMines = (gridArr, mines) => {
@@ -57,9 +73,11 @@ export class AppProvider extends React.Component {
     return (
       <AppContext.Provider
         value={{
+          placeFlag: this.placeFlag,
           reveal: this.reveal,
           isDead: state.isDead,
-          grid: state.grid
+          grid: state.grid,
+          mines: state.mines
         }}
       >
         {props.children}
