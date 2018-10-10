@@ -1,5 +1,6 @@
 Cell Vertical
 justifyContent center
+textAlign center
 height 25
 borderRightWidth 1
 borderRightStyle solid
@@ -9,19 +10,21 @@ borderBottomStyle solid
 borderBottomColor black
 cursor pointer
 onClick <
+onContextMenu <
+alignItems center
+flexDirection row
+flexWrap wrap
 when <isRevealed
 borderRightWidth 1
-borderRightStyle dashed
 borderRightColor black
-borderLeftWidth 1
-borderLefttStyle dashed
-borderLeftColor black
 borderBottomWidth 1
 borderBottomStyle dashed
 borderBottomColor black
-borderTopWidth 1
-borderTopStyle dashed
-borderTopColor black
+Flag
+onWhen <showFlag
+width 25
+height 25
+
 Background Vertical
 width 24
 height 24
@@ -34,3 +37,15 @@ Bomb
 onWhen <isRevealed
 width 25
 height 25
+# Count
+# text 1
+# color #0E00FF
+# Count
+# text 2
+# color #048001
+# Count
+# text 3
+# color #048001
+# Count
+# text 4
+# color #060084

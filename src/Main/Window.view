@@ -1,0 +1,10 @@
+Window  Vertical
+backgroundColor #C1C1C3
+Header
+# isDead <
+
+Board
+height <
+width <
+mines <
+reveal <

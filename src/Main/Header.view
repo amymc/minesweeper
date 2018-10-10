@@ -1,9 +1,14 @@
 Header Horizontal
+justifyContent spaceAround
+alignItems center
 Counter
 mode score
+text 160
 
 Status
 # isDead <
 
 Counter
 mode time
+text <
+# text 010

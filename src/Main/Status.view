@@ -1,8 +1,18 @@
 Status Horizontal
-justifyContent flexEnd
+justifyContent center
+width 44
+height 44
+borderStyle solid
+borderWidth 3
+borderTopColor #939493
+borderLeftColor #939493
+borderBottomColor #1A161A
+borderRightColor #1A161A
+alignItems center
 Face Horizontal
-width 42
-height 42
+width 32
+height 32
+alignSelf center
 Smile
 onWhen <!isDead
 # source ./Images/Smile.png
@@ -12,4 +22,3 @@ onWhen <!isDead
 Dead
 onWhen <isDead
 # source ./Images/Dead.png
-

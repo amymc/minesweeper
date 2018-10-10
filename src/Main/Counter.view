@@ -1,3 +1,19 @@
 Counter Horizontal
-backgroundColor black
-color red
+backgroundColor #000100
+height 40
+width 70
+color #FF0508
+Bckground Text
+position absolute
+fontFamily DigitMono
+fontWeight 400
+fontSize 50
+opacity 0.3
+text 888
+
+Main Text
+fontFamily DigitMono
+fontWeight 400
+fontSize 50
+opacity 0.8
+text <

@@ -3,13 +3,18 @@ import Cell from "./Cell.view.js"
 import { AppConsumer } from "../App.context"
 
 class CellLogic extends React.Component {
-  // state = {
-  //   isRevealed: false
-  // }
+  state = {
+    showFlag: false
+  }
 
   // reveal = () => {
   //   this.setState({ isRevealed: true })
   // }
+
+  contextMenu = e => {
+    e.preventDefault()
+    this.setState({ showFlag: true })
+  }
 
   render() {
     return (
@@ -18,6 +23,8 @@ class CellLogic extends React.Component {
           <Cell
             {...this.props.item}
             onClick={e => reveal(e, this.props.item)}
+            onContextMenu={this.contextMenu}
+            {...this.state}
           />
         )}
       </AppConsumer>

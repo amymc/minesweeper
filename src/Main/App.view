@@ -5,11 +5,4 @@ flexShrink 1
 flexBasis auto
 justifyContent center
 backgroundColor #008183
-Header
-# isDead <
-
-Board
-height <
-width <
-mines <
-reveal <
+Window
