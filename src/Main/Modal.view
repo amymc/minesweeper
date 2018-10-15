@@ -1,0 +1,6 @@
+Modal Horizontal
+onWhen <shouldShowModal
+width 450
+height 134
+Text
+text You are beyond help

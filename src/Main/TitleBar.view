@@ -1,0 +1,20 @@
+TitleBar Horizontal
+height 34
+backgroundColor #030280
+flexDirection row
+justifyContent spaceBetween
+Title Text
+fontFamily LeviWindows
+fontWeight 400
+fontSize 34
+letterSpacing 1.7
+color #FFF
+text Minesweeper
+
+Close Horizontal
+onClick <
+height 30
+width 30
+alignSelf center
+backgroundColor #ffaa00
+Text

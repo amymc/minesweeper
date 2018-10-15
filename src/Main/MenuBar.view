@@ -1,0 +1,25 @@
+MenuBar Horizontal
+marginLeft 13
+marginTop -10
+marginBottom 4
+fontFamily LeviWindows
+fontSize 34
+Game Horizontal
+onClick <
+Text
+text G
+textDecoration underline
+
+Text
+text ame
+
+
+Help Horizontal
+onClick <showHelp
+Text
+text H
+textDecoration underline
+marginLeft 18
+
+Text
+text elp
