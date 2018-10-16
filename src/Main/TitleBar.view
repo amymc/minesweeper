@@ -1,20 +1,29 @@
 TitleBar Horizontal
-height 34
-backgroundColor #030280
+height 28
+width 100%
+backgroundColor #000086
+paddingTop 0
+paddingRight 2
+paddingBottom 0
+paddingLeft 2
+lineHeight 17px
+borderWidth 2
+borderStyle solid
+borderColor #000
 flexDirection row
 justifyContent spaceBetween
 Title Text
 fontFamily LeviWindows
-fontWeight 400
-fontSize 34
+fontWeight 700
+fontSize 30
 letterSpacing 1.7
 color #FFF
-text Minesweeper
+text <
 
 Close Horizontal
 onClick <
-height 30
-width 30
+height 22
+width 22
 alignSelf center
-backgroundColor #ffaa00
+backgroundColor #c0c7c8
 Text

@@ -1,6 +1,7 @@
 Window  Vertical
 backgroundColor #C1C1C3
 TitleBar
+text Minesweeper
 
 MenuBar
 

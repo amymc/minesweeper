@@ -1,6 +1,33 @@
 Modal Horizontal
 onWhen <shouldShowModal
+position absolute
 width 450
 height 134
+backgroundColor #C1C1C3
+flexShrink 1
+flexDirection column
+borderWidth 2
+borderStyle solid
+borderColor #000
+paddingTop 2
+paddingRight 2
+paddingBottom 2
+paddingLeft 2
+fontFamily Overpass
+TitleBar
+text Error
+
+Horizontal
+marginTop 15
+marginRight 15
+marginBottom 15
+marginLeft 15
 Text
 text You are beyond help
+
+ButtonWrapper Horizontal
+Button
+text Cry yourself to sleep
+
+Button
+text Play again

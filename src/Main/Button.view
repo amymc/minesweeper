@@ -1,0 +1,17 @@
+Button Horizontal
+paddingTop 2
+paddingRight 8
+paddingBottom 2
+paddingLeft 8
+marginTop 20
+marginBottom 20
+marginLeft 20
+backgroundColor #c0c7c8
+borderWidth 2
+borderStyle solid
+borderColor #000
+height 24
+onClick <
+Text
+fontSize 14
+text <
