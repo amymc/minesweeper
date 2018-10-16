@@ -1,0 +1,14 @@
+ErrorIcon Image
+alignSelf < auto
+backgroundColor < transparent
+borderTopLeftRadius < 0
+borderTopRightRadius < 0
+borderBottomLeftRadius < 0
+borderBottomRightRadius < 0
+marginTop < 0
+marginBottom < 0
+marginLeft < 0
+marginRight < 0
+source < ./error-icon.png
+width < 37
+height < 35

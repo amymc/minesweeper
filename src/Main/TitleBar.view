@@ -27,3 +27,7 @@ width 22
 alignSelf center
 backgroundColor #c0c7c8
 Text
+text &#10005;
+color #7F7F7F
+fontFamily WindowsCommand
+fontWeight 700
