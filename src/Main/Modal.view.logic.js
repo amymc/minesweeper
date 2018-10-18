@@ -7,8 +7,12 @@ export default class ModalLogic extends React.Component {
     const { props } = this
     return (
       <ModalConsumer>
-        {({ shouldShowModal }) => (
-          <Modal {...props} shouldShowModal={shouldShowModal} />
+        {({ shouldShowModal, toggleModal }) => (
+          <Modal
+            {...props}
+            shouldShowModal={shouldShowModal}
+            toggleModal={toggleModal}
+          />
         )}
       </ModalConsumer>
     )

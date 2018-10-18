@@ -3,7 +3,7 @@ paddingTop 2
 paddingRight 8
 paddingBottom 2
 paddingLeft 8
-marginTop 20
+marginTop 10
 marginBottom 20
 marginLeft 20
 backgroundColor #c0c7c8
@@ -12,6 +12,11 @@ borderStyle solid
 borderColor #000
 height 24
 onClick <
+cursor pointer
+when <hover
+borderWidth 2
+borderStyle solid
+borderColor #7a7a7a
 Text
 fontSize 14
 text <

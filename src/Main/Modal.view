@@ -17,19 +17,29 @@ fontFamily Overpass
 TitleBar
 text Error
 
-Horizontal
-marginTop 15
+ErrorWrapper Horizontal
+marginTop 35
 marginRight 15
 marginBottom 15
 marginLeft 15
+flexDirection row
+flexBasis auto
+flexGrow 1
+flexShrink 1
+alignItems center
 ErrorIcon
 
-Text
+ErrorMessage Text
 text You are beyond help
+marginLeft 10
+
 
 ButtonWrapper Horizontal
+justifyContent flexEnd
+marginRight 8
 Button
 text Cry yourself to sleep
 
 Button
 text Play again
+onClick <toggleModal

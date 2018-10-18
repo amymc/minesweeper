@@ -6,8 +6,8 @@ export class ModalProvider extends React.Component {
     shouldShowModal: false
   }
 
-  showModal = () => {
-    this.setState({ shouldShowModal: true })
+  toggleModal = () => {
+    this.setState({ shouldShowModal: !this.state.shouldShowModal })
   }
 
   render() {
@@ -15,7 +15,7 @@ export class ModalProvider extends React.Component {
     return (
       <ModalContext.Provider
         value={{
-          showModal: this.showModal,
+          toggleModal: this.toggleModal,
           shouldShowModal: state.shouldShowModal
         }}
       >

@@ -1,7 +1,7 @@
 TitleBar Horizontal
 height 28
 width 100%
-backgroundColor #000086
+backgroundColor #0016c0
 paddingTop 0
 paddingRight 2
 paddingBottom 0
@@ -20,14 +20,4 @@ letterSpacing 1.7
 color #FFF
 text <
 
-Close Horizontal
-onClick <
-height 22
-width 22
-alignSelf center
-backgroundColor #c0c7c8
-Text
-text &#10005;
-color #7F7F7F
-fontFamily WindowsCommand
-fontWeight 700
+CloseButton

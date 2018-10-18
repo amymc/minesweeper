@@ -7,7 +7,7 @@ export default class MenuBarLogic extends React.Component {
     const { props } = this
     return (
       <ModalConsumer>
-        {({ showModal }) => <MenuBar {...props} showHelp={showModal} />}
+        {({ toggleModal }) => <MenuBar {...props} showHelp={toggleModal} />}
       </ModalConsumer>
     )
   }

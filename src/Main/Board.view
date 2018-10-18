@@ -15,12 +15,11 @@ borderRightStyle solid
 borderBottomColor #FEFCFF
 borderBottomWidth 4
 borderBottomStyle solid
-#FEFCFF
+# FEFCFF
 from <grid
 BoardColumn
 reveal <
 # Cell
-
 # Board Table
 # height 200
 # width 200
