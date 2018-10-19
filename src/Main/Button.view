@@ -10,9 +10,10 @@ backgroundColor #c0c7c8
 borderWidth 2
 borderStyle solid
 borderColor #000
-height 24
-onClick <
 cursor pointer
+height 40
+name <
+onClick <
 when <hover
 borderWidth 2
 borderStyle solid

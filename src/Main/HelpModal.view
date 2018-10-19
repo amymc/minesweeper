@@ -1,5 +1,4 @@
-Modal Horizontal
-onWhen <shouldShowModal
+HelpModal Horizontal
 position absolute
 width 450
 height 134
@@ -39,7 +38,10 @@ justifyContent flexEnd
 marginRight 8
 Button
 text Cry yourself to sleep
+name showVideo
+onClick <toggleModal
 
 Button
 text Play again
+name showHelp
 onClick <toggleModal

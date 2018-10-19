@@ -15,7 +15,8 @@ text ame
 
 
 Help Horizontal
-onClick <showHelp
+name showHelp
+onClick <toggleModal
 Text
 text H
 textDecoration underline

@@ -3,11 +3,12 @@ import React from "react"
 const ModalContext = React.createContext()
 export class ModalProvider extends React.Component {
   state = {
-    shouldShowModal: false
+    showHelp: false,
+    showVideo: false
   }
 
-  toggleModal = () => {
-    this.setState({ shouldShowModal: !this.state.shouldShowModal })
+  toggleModal = e => {
+    this.setState({ [e.currentTarget.name]: !this.state[e.currentTarget.name] })
   }
 
   render() {
@@ -16,7 +17,8 @@ export class ModalProvider extends React.Component {
       <ModalContext.Provider
         value={{
           toggleModal: this.toggleModal,
-          shouldShowModal: state.shouldShowModal
+          showHelp: state.showHelp,
+          showVideo: state.showVideo
         }}
       >
         {props.children}

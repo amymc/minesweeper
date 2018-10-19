@@ -1,0 +1,14 @@
+VideoModal Horizontal
+position absolute
+width 479
+height 392
+borderWidth 2
+borderStyle solid
+borderColor #000
+flexDirection column
+backgroundColor #C1C1C3
+zIndex 2
+TitleBar
+text Cry baby
+
+Video

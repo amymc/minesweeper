@@ -7,12 +7,13 @@ justifyContent center
 backgroundColor #008183
 Window
 
-Video
+VideoModal
+onWhen <showVideo
 
-Modal
+HelpModal
+onWhen <showHelp
 # Header
 # # isDead <
-
 # Board
 # height <
 # width <
