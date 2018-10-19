@@ -9,6 +9,7 @@ borderLeftColor #939493
 borderBottomColor #1A161A
 borderRightColor #1A161A
 alignItems center
+onClick <
 Face Horizontal
 width 32
 height 32

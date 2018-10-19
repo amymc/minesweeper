@@ -10,7 +10,7 @@ export class AppProvider extends React.Component {
     this.state = {
       grid: this.createGrid(height, width, mines),
       // isDead: false,
-      time: 160,
+      time: 0,
       // isPlaying: false,
       status: "isStart", //isPlaying, isOver
       mines,
@@ -18,6 +18,8 @@ export class AppProvider extends React.Component {
       width
     }
   }
+
+  // 40 mines 16 * 16 , 99 mines 16 * 30
 
   createGrid = (height, width, mines) => {
     let arr = []
@@ -78,9 +80,18 @@ export class AppProvider extends React.Component {
     }
   }
 
+  reset = () => {
+    const { height, width, mines } = this.state
+    this.setState({
+      grid: this.createGrid(height, width, mines),
+      status: "isStart",
+      time: 0
+    })
+  }
+
   tick = () => {
     if (this.state.status === "isPlaying") {
-      this.setState({ time: this.state.time - 1 })
+      this.setState({ time: this.state.time + 1 })
     }
   }
 
@@ -90,6 +101,7 @@ export class AppProvider extends React.Component {
       <AppContext.Provider
         value={{
           placeFlag: this.placeFlag,
+          reset: this.reset,
           reveal: this.reveal,
           isDead: state.status === "isOver",
           grid: state.grid,
