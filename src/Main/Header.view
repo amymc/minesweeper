@@ -3,7 +3,7 @@ justifyContent spaceAround
 alignItems center
 Counter
 mode score
-text 160
+text <time
 
 Status
 isDead <

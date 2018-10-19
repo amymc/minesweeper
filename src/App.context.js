@@ -9,7 +9,10 @@ export class AppProvider extends React.Component {
     const mines = 10
     this.state = {
       grid: this.createGrid(height, width, mines),
-      isDead: false,
+      // isDead: false,
+      time: 160,
+      // isPlaying: false,
+      status: "isStart", //isPlaying, isOver
       mines,
       height,
       width
@@ -56,18 +59,31 @@ export class AppProvider extends React.Component {
   }
 
   reveal = (e, cell) => {
-    if (this.state.isDead) return
+    if (this.state.status === "isOver") return
+    if (this.state.status === "isStart") {
+      this.setState({ status: "isPlaying" })
+      this.interval = setInterval(this.tick.bind(this), 1000)
+    }
+
     let updatedGrid = this.state.grid
 
     if (cell.hasMine) {
       updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
       updatedGrid[cell.x][cell.y].isLosingCell = true
-      this.setState({ grid: updatedGrid, isDead: true })
+      clearInterval(this.interval)
+      this.setState({ grid: updatedGrid, status: "isOver" })
     } else {
       updatedGrid[cell.x][cell.y].isRevealed = true
       this.setState({ grid: updatedGrid })
     }
   }
+
+  tick = () => {
+    if (this.state.status === "isPlaying") {
+      this.setState({ time: this.state.time - 1 })
+    }
+  }
+
   render() {
     const { props, state } = this
     return (
@@ -75,9 +91,10 @@ export class AppProvider extends React.Component {
         value={{
           placeFlag: this.placeFlag,
           reveal: this.reveal,
-          isDead: state.isDead,
+          isDead: state.status === "isOver",
           grid: state.grid,
-          mines: state.mines
+          mines: state.mines,
+          time: state.time
         }}
       >
         {props.children}
