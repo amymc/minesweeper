@@ -12,3 +12,5 @@ marginRight < 0
 source < ./Hourglass.png
 width < 55
 height <
+rotate 150
+# ease duration 400

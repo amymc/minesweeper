@@ -1,4 +1,7 @@
 Menu List
+position absolute
+backgroundColor #C1C1C3
+zIndex 2
 height 300
 from <
 MenuItem

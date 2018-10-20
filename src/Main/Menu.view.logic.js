@@ -3,10 +3,22 @@ import React from "react"
 
 const list = [
   {
-    title: "beginner"
+    title: "New"
   },
   {
-    title: "intermediate"
+    title: "Beginner"
+  },
+  {
+    title: "Intermediate"
+  },
+  {
+    title: "Expert"
+  },
+  {
+    title: "Best Times..."
+  },
+  {
+    title: "Exit"
   }
 ]
 

@@ -1,16 +1,28 @@
 import React from "react"
 import { ModalConsumer } from "./Modal.context"
+import { AppConsumer } from "../App.context"
 import HelpModal from "./HelpModal.view.js"
 
 export default class HelpModalLogic extends React.Component {
   render() {
     const { props } = this
     return (
-      <ModalConsumer>
-        {({ toggleItem }) => (
-          <HelpModal {...props} toggleItem={e => toggleItem(e)} />
+      <AppConsumer>
+        {({ reset }) => (
+          <ModalConsumer>
+            {({ toggleItem }) => (
+              <HelpModal
+                {...props}
+                toggleItem={toggleItem}
+                playAgain={e => {
+                  toggleItem(e)
+                  reset()
+                }}
+              />
+            )}
+          </ModalConsumer>
         )}
-      </ModalConsumer>
+      </AppConsumer>
     )
   }
 }
