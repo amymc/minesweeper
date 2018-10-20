@@ -1,11 +1,20 @@
 MenuBar Horizontal
-marginLeft 13
-marginTop -10
-marginBottom 4
+paddingBottom 5
+marginTop 1
 fontFamily LeviWindows
 fontSize 34
+lineHeight 24px
 Game Horizontal
-onClick <
+onClick <toggleItem
+name showMenu
+color #000
+backgroundColor transparent
+paddingLeft 8
+paddingRight 8
+paddingBottom 8
+when <hover
+color #fff
+backgroundColor #0016c0
 Text
 text G
 textDecoration underline
@@ -16,11 +25,19 @@ text ame
 
 Help Horizontal
 name showHelp
-onClick <toggleModal
+onClick <toggleItem
+color #000
+backgroundColor transparent
+paddingLeft 8
+paddingRight 8
+paddingBottom 8
+# marginLeft 18
+when <hover
+color #fff
+backgroundColor #0016c0
 Text
 text H
 textDecoration underline
-marginLeft 18
 
 Text
 text elp

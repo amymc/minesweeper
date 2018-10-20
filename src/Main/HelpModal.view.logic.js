@@ -7,8 +7,8 @@ export default class HelpModalLogic extends React.Component {
     const { props } = this
     return (
       <ModalConsumer>
-        {({ toggleModal }) => (
-          <HelpModal {...props} toggleModal={e => toggleModal(e)} />
+        {({ toggleItem }) => (
+          <HelpModal {...props} toggleItem={e => toggleItem(e)} />
         )}
       </ModalConsumer>
     )

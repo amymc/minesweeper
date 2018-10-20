@@ -35,13 +35,13 @@ marginLeft 10
 
 ButtonWrapper Horizontal
 justifyContent flexEnd
-marginRight 8
+marginRight 14
 Button
 text Cry yourself to sleep
 name showVideo
-onClick <toggleModal
+onClick <toggleItem
 
 Button
 text Play again
 name showHelp
-onClick <toggleModal
+onClick <toggleItem

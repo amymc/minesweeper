@@ -5,7 +5,7 @@ backgroundColor #0016c0
 paddingTop 0
 paddingRight 2
 paddingBottom 0
-paddingLeft 2
+paddingLeft 6
 lineHeight 17px
 borderWidth 2
 borderStyle solid
