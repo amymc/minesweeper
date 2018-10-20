@@ -7,8 +7,12 @@ export default class AppLogic extends React.Component {
     return (
       <ModalProvider>
         <ModalConsumer>
-          {({ showHelp, showVideo }) => (
-            <App showHelp={showHelp} showVideo={showVideo} />
+          {({ showHelp, showMenu, showVideo }) => (
+            <App
+              showHelp={showHelp}
+              showMenu={showMenu}
+              showVideo={showVideo}
+            />
           )}
         </ModalConsumer>
       </ModalProvider>

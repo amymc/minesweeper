@@ -17,6 +17,7 @@ borderBottomWidth 4
 borderBottomStyle solid
 # FEFCFF
 from <grid
+pass item
 BoardColumn
 reveal <
 # Cell

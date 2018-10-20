@@ -5,6 +5,9 @@ text Minesweeper
 
 MenuBar
 
+Menu
+onWhen <showMenu
+
 Header
 # isDead <
 

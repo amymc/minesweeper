@@ -6,6 +6,7 @@ flexBasis auto
 justifyContent center
 backgroundColor #008183
 Window
+showMenu <
 
 VideoModal
 onWhen <showVideo
