@@ -11,13 +11,16 @@ borderWidth 2
 borderStyle solid
 borderColor #000
 flexDirection row
-justifyContent spaceBetween
+justifyContent flexStart
+TitleBomb
+onWhen <hasIcon
+
 Title Text
 fontFamily LeviWindows
 fontWeight 700
 fontSize 30
 letterSpacing 1.7
 color #FFF
-text <
+text < Minesweeper
 
 CloseButton

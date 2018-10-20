@@ -4,6 +4,7 @@ height 22
 width 22
 alignSelf center
 justifyContent center
+marginLeft auto
 backgroundColor #c0c7c8
 borderBottomStyle solid
 borderBottomWidth 2

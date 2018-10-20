@@ -2,6 +2,7 @@ Menu List
 position absolute
 backgroundColor #C1C1C3
 zIndex 2
-height 300
+height 150
+top 66
 from <
 MenuItem

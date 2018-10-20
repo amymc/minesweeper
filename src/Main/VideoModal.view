@@ -1,7 +1,7 @@
 VideoModal Horizontal
 position absolute
 width 479
-height 392
+height 324
 borderWidth 2
 borderStyle solid
 borderColor #000
