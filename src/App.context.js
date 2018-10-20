@@ -65,8 +65,9 @@ export class AppProvider extends React.Component {
     })
   }
 
-  onMouseDown = async () => {
-    await this.setStateAsync({ mood: "isScared" })
+  onMouseDown = () => {
+    if (this.state.status === "isOver") return
+    this.setState({ mood: "isScared" })
   }
 
   reveal = (e, cell) => {

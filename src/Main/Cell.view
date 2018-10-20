@@ -2,6 +2,12 @@ Cell Vertical
 justifyContent center
 textAlign center
 height 25
+borderTopWidth 2
+borderTopStyle solid
+borderTopColor white
+borderLeftWidth 2
+borderLeftStyle solid
+borderLeftColor white
 borderRightWidth 1
 borderRightStyle solid
 borderRightColor black
@@ -16,8 +22,15 @@ alignItems center
 flexDirection row
 flexWrap wrap
 when <isRevealed
+borderTopWidth 1
+borderTopStyle none
+borderTopColor black
+borderLeftWidth 1
+borderLeftStyle none
+borderLeftColor black
 borderRightWidth 1
 borderRightColor black
+borderRightStyle dashed
 borderBottomWidth 1
 borderBottomStyle dashed
 borderBottomColor black
@@ -27,8 +40,8 @@ width 25
 height 25
 
 Background Vertical
-width 24
-height 24
+# width 24
+# height 24
 backgroundColor #C3BFC2
 when <isLosingCell
 backgroundColor red
