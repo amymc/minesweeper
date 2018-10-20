@@ -9,10 +9,9 @@ export class AppProvider extends React.Component {
     const mines = 10
     this.state = {
       grid: this.createGrid(height, width, mines),
-      // isDead: false,
       time: 0,
-      // isPlaying: false,
       status: "isStart", //isPlaying, isOver
+      mood: "isHappy", //isScared, isDead
       mines,
       height,
       width
@@ -60,8 +59,19 @@ export class AppProvider extends React.Component {
     return gridArr
   }
 
+  setStateAsync = state => {
+    return new Promise(resolve => {
+      this.setState(state, resolve)
+    })
+  }
+
+  onMouseDown = async () => {
+    await this.setStateAsync({ mood: "isScared" })
+  }
+
   reveal = (e, cell) => {
     if (this.state.status === "isOver") return
+
     if (this.state.status === "isStart") {
       this.setState({ status: "isPlaying" })
       this.interval = setInterval(this.tick.bind(this), 1000)
@@ -73,10 +83,10 @@ export class AppProvider extends React.Component {
       updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
       updatedGrid[cell.x][cell.y].isLosingCell = true
       clearInterval(this.interval)
-      this.setState({ grid: updatedGrid, status: "isOver" })
+      this.setState({ grid: updatedGrid, mood: "isDead", status: "isOver" })
     } else {
       updatedGrid[cell.x][cell.y].isRevealed = true
-      this.setState({ grid: updatedGrid })
+      this.setState({ grid: updatedGrid, mood: "isHappy" })
     }
   }
 
@@ -84,6 +94,7 @@ export class AppProvider extends React.Component {
     const { height, width, mines } = this.state
     this.setState({
       grid: this.createGrid(height, width, mines),
+      mood: "isHappy",
       status: "isStart",
       time: 0
     })
@@ -103,7 +114,8 @@ export class AppProvider extends React.Component {
           placeFlag: this.placeFlag,
           reset: this.reset,
           reveal: this.reveal,
-          isDead: state.status === "isOver",
+          onMouseDown: this.onMouseDown,
+          mood: state.mood,
           grid: state.grid,
           mines: state.mines,
           time: state.time

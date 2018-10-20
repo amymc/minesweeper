@@ -6,10 +6,11 @@ class CellLogic extends React.Component {
   render() {
     return (
       <AppConsumer>
-        {({ placeFlag, reveal }) => (
+        {({ onMouseDown, placeFlag, reveal }) => (
           <Cell
             {...this.props.item}
-            onClick={e => reveal(e, this.props.item)}
+            onMouseDown={e => onMouseDown()}
+            onMouseUp={e => reveal(e, this.props.item)}
             onContextMenu={e => placeFlag(e, this.props.item)}
           />
         )}

@@ -8,9 +8,11 @@ export default class HeaderLogic extends React.Component {
     // return <Header {...props} text={"010"} />
     return (
       <AppConsumer>
-        {({ isDead, mines, time, reset }) => (
+        {({ mood, mines, time, reset }) => (
           <Header
-            isDead={isDead}
+            isDead={mood === "isDead"}
+            isScared={mood === "isScared"}
+            isHappy={mood === "isHappy"}
             numMines={mines.toString().padStart(3, "0")}
             time={time.toString().padStart(3, "0")}
             reset={reset}

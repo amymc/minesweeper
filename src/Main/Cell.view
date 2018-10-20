@@ -9,7 +9,8 @@ borderBottomWidth 1
 borderBottomStyle solid
 borderBottomColor black
 cursor pointer
-onClick <
+onMouseDown <
+onMouseUp <
 onContextMenu <
 alignItems center
 flexDirection row

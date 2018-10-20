@@ -15,10 +15,13 @@ width 32
 height 32
 alignSelf center
 Smile
-onWhen <!isDead
+onWhen <isHappy
 # source ./Images/Smile.png
 # when <isBad
 # source ./Images/Frown.png
+
+Ohhh
+onWhen <isScared
 
 Dead
 onWhen <isDead
