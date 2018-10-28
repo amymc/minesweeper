@@ -21,6 +21,7 @@ onContextMenu <
 alignItems center
 flexDirection row
 flexWrap wrap
+width 25
 when <isRevealed
 borderTopWidth 1
 borderTopStyle none

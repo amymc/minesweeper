@@ -59,19 +59,14 @@ export class AppProvider extends React.Component {
     return gridArr
   }
 
-  setStateAsync = state => {
-    return new Promise(resolve => {
-      this.setState(state, resolve)
-    })
-  }
-
-  onMouseDown = () => {
-    if (this.state.status === "isOver") return
-    this.setState({ mood: "isScared" })
+  onMouseUp = () => {
+    const mood = this.state.status === "isOver" ? "isDead" : "isHappy"
+    this.setState({ mood })
   }
 
   reveal = (e, cell) => {
     if (this.state.status === "isOver") return
+    this.setState({ mood: "isScared" })
 
     if (this.state.status === "isStart") {
       this.setState({ status: "isPlaying" })
@@ -84,10 +79,10 @@ export class AppProvider extends React.Component {
       updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
       updatedGrid[cell.x][cell.y].isLosingCell = true
       clearInterval(this.interval)
-      this.setState({ grid: updatedGrid, mood: "isDead", status: "isOver" })
+      this.setState({ grid: updatedGrid, status: "isOver" })
     } else {
       updatedGrid[cell.x][cell.y].isRevealed = true
-      this.setState({ grid: updatedGrid, mood: "isHappy" })
+      this.setState({ grid: updatedGrid })
     }
   }
 
@@ -115,7 +110,7 @@ export class AppProvider extends React.Component {
           placeFlag: this.placeFlag,
           reset: this.reset,
           reveal: this.reveal,
-          onMouseDown: this.onMouseDown,
+          onMouseUp: this.onMouseUp,
           mood: state.mood,
           grid: state.grid,
           mines: state.mines,

@@ -5,12 +5,13 @@ borderTopLeftRadius < 0
 borderTopRightRadius < 0
 borderBottomLeftRadius < 0
 borderBottomRightRadius < 0
-marginTop < 0
-marginBottom < 0
+marginTop auto
+marginBottom auto
 marginLeft < 0
 marginRight < 0
 source < ./Hourglass.png
 width < 55
 height <
-rotate 150
-# ease duration 400
+# rotate 0
+# when <shouldRotate
+# rotate 360 ease

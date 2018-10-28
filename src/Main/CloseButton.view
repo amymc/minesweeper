@@ -1,7 +1,6 @@
 CloseButton Horizontal
 onClick <
 height 22
-width 22
 alignSelf center
 justifyContent center
 marginLeft auto
@@ -18,6 +17,7 @@ borderLeftColor #fff
 borderTopColor #fff
 borderTopWidth 2
 borderTopStyle solid
+width 22
 Text
 text &#10005;
 color #7F7F7F

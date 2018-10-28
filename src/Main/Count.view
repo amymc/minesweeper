@@ -1,6 +1,7 @@
 Count Text
-fontFamily MineSweeper
+color <
+text < hello
+fontFamily Montserrat
+fontStyle normal
 fontWeight 400
 textAlign center
-color <
-text <
