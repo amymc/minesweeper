@@ -9,6 +9,7 @@ export class ModalProvider extends React.Component {
   }
 
   toggleItem = e => {
+    if (e.stopPropagation) e.stopPropagation()
     this.setState({ [e.currentTarget.name]: !this.state[e.currentTarget.name] })
   }
 
