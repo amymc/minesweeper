@@ -10,8 +10,8 @@ export class AppProvider extends React.Component {
     this.state = {
       grid: this.createGrid(height, width, mines),
       time: 0,
-      status: "isStart", //isPlaying, isOver
-      mood: "isHappy", //isScared, isDead
+      status: "isStart", //isPlaying, isOver, hasWon
+      mood: "isHappy", //isScared, isDead, isCool
       mines,
       height,
       width
@@ -66,6 +66,8 @@ export class AppProvider extends React.Component {
 
   reveal = (e, cell) => {
     if (this.state.status === "isOver") return
+    //dont reveal on right-click
+    if (e.nativeEvent.which === 3) return
     this.setState({ mood: "isScared" })
 
     if (this.state.status === "isStart") {

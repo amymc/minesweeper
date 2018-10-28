@@ -1,4 +1,4 @@
-Bomb1 Image
+Cool Image
 alignSelf < auto
 backgroundColor < transparent
 borderTopLeftRadius < 0
@@ -9,6 +9,6 @@ marginTop < 0
 marginBottom < 0
 marginLeft < 0
 marginRight < 0
-source < ./bomb1.png
-width < 29
-height < 29
+source < ./Cool.png
+width < 407
+height < 409

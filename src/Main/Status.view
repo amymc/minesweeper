@@ -16,13 +16,12 @@ height 32
 alignSelf center
 Smile
 onWhen <isHappy
-# source ./Images/Smile.png
-# when <isBad
-# source ./Images/Frown.png
 
 Ohhh
 onWhen <isScared
 
 Dead
 onWhen <isDead
-# source ./Images/Dead.png
+
+Cool
+onWhen <isCool
