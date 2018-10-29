@@ -11,6 +11,13 @@ borderRightColor #1A161A
 alignItems center
 onClick <
 bottom 2
+onMouseDown <toggleState
+onMouseUp <toggleState
+when <isPressed
+borderTopColor #1A161A
+borderLeftColor #1A161A
+borderBottomColor #fff
+borderRightColor #fff
 Face Horizontal
 width 32
 height 32
