@@ -19,14 +19,14 @@ borderTopWidth 2
 borderTopStyle solid
 width 22
 Text
-text &#10005;
+text ✕
 color #7F7F7F
 fontFamily Arial
 fontWeight 800
 zIndex 1
 
 Text
-text &#10005;
+text ✕
 color #fefefe
 fontFamily Arial
 fontWeight 800

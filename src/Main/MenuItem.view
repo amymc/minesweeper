@@ -5,7 +5,7 @@ color #000
 width 100
 height 30
 maxWidth 100
-when <hover
+when <isHovered
 backgroundColor #0016c0
 color #fff
 Text

@@ -12,7 +12,7 @@ backgroundColor transparent
 paddingLeft 8
 paddingRight 8
 paddingBottom 8
-when <hover
+when <isHovered
 color #fff
 backgroundColor #0016c0
 Text
@@ -32,7 +32,7 @@ paddingLeft 8
 paddingRight 8
 paddingBottom 8
 # marginLeft 18
-when <hover
+when <isHovered
 color #fff
 backgroundColor #0016c0
 Text

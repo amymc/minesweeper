@@ -1,27 +1,6 @@
 import React from "react"
+import { AppConsumer } from "../App.context"
 import Menu from "./Menu.view.js"
-
-const list = [
-  {
-    title: "New"
-  },
-  {
-    title: "Beginner"
-  },
-  {
-    title: "Intermediate"
-  },
-  {
-    title: "Expert"
-  },
-  {
-    title: "Best Times..."
-  },
-  {
-    title: "Exit"
-  }
-]
-
 export default class MenuLogic extends React.Component {
   componentDidMount = () => {
     console.log(this.props)
@@ -50,9 +29,13 @@ export default class MenuLogic extends React.Component {
   render() {
     const { props } = this
     return (
-      <div ref={this.setWrapperRef}>
-        <Menu {...props} from={list} />
-      </div>
+      <AppConsumer>
+        {({ list }) => (
+          <div ref={this.setWrapperRef}>
+            <Menu {...props} from={list} />
+          </div>
+        )}
+      </AppConsumer>
     )
   }
 }

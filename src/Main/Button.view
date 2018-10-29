@@ -14,7 +14,7 @@ cursor pointer
 name <
 onClick <
 height 30
-when <hover
+when <isHovered
 borderWidth 2
 borderStyle solid
 borderColor #7a7a7a
