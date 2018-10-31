@@ -50,14 +50,18 @@ export class AppProvider extends React.Component {
         arr[i][j] = {
           x: i,
           y: j,
+          hasMine: false,
           isRevealed: false,
           isLosingCell: false,
-          hasFlag: false
+          hasFlag: false,
+          neighbour: 0
         }
       }
     }
 
-    this.placeMines(arr, mines)
+    arr = this.placeMines(arr, mines)
+    arr = this.getNeighbours(arr, height, width)
+    debugger
     return arr
   }
 
@@ -73,12 +77,78 @@ export class AppProvider extends React.Component {
     while (minesPlaced < mines) {
       const randomx = Math.floor(Math.random() * 8)
       const randomy = Math.floor(Math.random() * 8)
-      if (!gridArr[randomx][randomy].isMine) {
+      if (!gridArr[randomx][randomy].hasMine) {
         gridArr[randomx][randomy].hasMine = true
         minesPlaced++
       }
     }
     return gridArr
+  }
+
+  getNeighbours = (data, height, width) => {
+    let updatedData = data
+    for (let i = 0; i < height; i++) {
+      for (let j = 0; j < width; j++) {
+        if (data[i][j].hasMine !== true) {
+          let mine = 0
+          const area = this.traverseBoard(
+            data[i][j].x,
+            data[i][j].y,
+            data,
+            height,
+            width
+          )
+          area.forEach(value => {
+            if (value.hasMine) {
+              mine++
+            }
+          })
+          if (mine === 0) {
+            updatedData[i][j].isEmpty = true
+          }
+          updatedData[i][j].neighbour = mine
+        }
+      }
+    }
+    return updatedData
+  }
+
+  // looks for neighbouring cells and returns them
+  traverseBoard(x, y, data, height, width) {
+    const el = []
+    //up
+    if (x > 0) {
+      el.push(data[x - 1][y])
+    }
+    //down
+    if (x < height - 1) {
+      el.push(data[x + 1][y])
+    }
+    //left
+    if (y > 0) {
+      el.push(data[x][y - 1])
+    }
+    //right
+    if (y < width - 1) {
+      el.push(data[x][y + 1])
+    }
+    // top left
+    if (x > 0 && y > 0) {
+      el.push(data[x - 1][y - 1])
+    }
+    // top right
+    if (x > 0 && y < width - 1) {
+      el.push(data[x - 1][y + 1])
+    }
+    // bottom right
+    if (x < height - 1 && y < width - 1) {
+      el.push(data[x + 1][y + 1])
+    }
+    // bottom left
+    if (x < height - 1 && y > 0) {
+      el.push(data[x + 1][y - 1])
+    }
+    return el
   }
 
   onMouseUp = () => {

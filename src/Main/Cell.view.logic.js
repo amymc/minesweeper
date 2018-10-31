@@ -12,6 +12,10 @@ class CellLogic extends React.Component {
             onMouseUp={onMouseUp}
             onMouseDown={e => reveal(e, this.props.item)}
             onContextMenu={e => placeFlag(e, this.props.item)}
+            isOne={this.props.item.neighbour === 1}
+            isTwo={this.props.item.neighbour === 2}
+            isThree={this.props.item.neighbour === 3}
+            isFour={this.props.item.neighbour === 4}
           />
         )}
       </AppConsumer>
