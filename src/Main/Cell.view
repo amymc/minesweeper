@@ -47,15 +47,9 @@ backgroundColor #C3BFC2
 when <isLosingCell
 backgroundColor red
 Count
+onWhen <!isEmpty
 text <neighbour
-when <isOne
-color #0E00FF
-when <isTwo
-color #048001
-when <isThree
-color #048001
-when <isFour
-color #060084
+color <
 
 Mine Vertical
 onWhen <hasMine

@@ -15,7 +15,7 @@ export default class StatusLogic extends React.Component {
     return (
       <Status
         {...props}
-        isPressed={this.state.isPressed}
+        isPressed={state.isPressed}
         toggleState={this.toggleState}
       />
     )

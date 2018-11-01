@@ -61,7 +61,6 @@ export class AppProvider extends React.Component {
 
     arr = this.placeMines(arr, mines)
     arr = this.getNeighbours(arr, height, width)
-    debugger
     return arr
   }
 

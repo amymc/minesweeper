@@ -1,7 +1,8 @@
 Count Text
 color <
 text < 1
-fontFamily Montserrat
+fontFamily Pixeltype
 fontStyle normal
+fontSize 26
 fontWeight 400
-textAlign center
+top 2
