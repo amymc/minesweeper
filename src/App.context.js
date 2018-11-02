@@ -173,10 +173,27 @@ export class AppProvider extends React.Component {
       updatedGrid[cell.x][cell.y].isLosingCell = true
       clearInterval(this.interval)
       this.setState({ grid: updatedGrid, status: "isOver" })
+    } else if (cell.isEmpty) {
+      updatedGrid = this.revealEmpty(cell.x, cell.y, updatedGrid)
+      updatedGrid[cell.x][cell.y].isRevealed = true
+      this.setState({ grid: updatedGrid })
     } else {
       updatedGrid[cell.x][cell.y].isRevealed = true
       this.setState({ grid: updatedGrid })
     }
+  }
+
+  revealEmpty(x, y, data) {
+    let area = this.traverseBoard(x, y, data)
+    area.map(value => {
+      if (!value.isRevealed && (value.isEmpty || !value.hasMine)) {
+        data[value.x][value.y].isRevealed = true
+        if (value.isEmpty) {
+          this.revealEmpty(value.x, value.y, data)
+        }
+      }
+    })
+    return data
   }
 
   reset = () => {

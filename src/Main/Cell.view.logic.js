@@ -13,15 +13,18 @@ class CellLogic extends React.Component {
           : "#060084"
 
   render() {
+    const { item } = this.props
+
     return (
       <AppConsumer>
         {({ onMouseUp, placeFlag, reveal }) => (
           <Cell
-            {...this.props.item}
+            {...item}
             onMouseUp={onMouseUp}
-            onMouseDown={e => reveal(e, this.props.item)}
-            onContextMenu={e => placeFlag(e, this.props.item)}
-            color={this.getColor(this.props.item.neighbour)}
+            onMouseDown={e => reveal(e, item)}
+            onContextMenu={e => placeFlag(e, item)}
+            color={this.getColor(item.neighbour)}
+            shouldShowCount={item.isRevealed && !item.isEmpty && !item.hasMine}
           />
         )}
       </AppConsumer>

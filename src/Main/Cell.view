@@ -47,7 +47,7 @@ backgroundColor #C3BFC2
 when <isLosingCell
 backgroundColor red
 Count
-onWhen <!isEmpty
+onWhen <shouldShowCount
 text <neighbour
 color <
 
