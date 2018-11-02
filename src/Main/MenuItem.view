@@ -1,5 +1,6 @@
 MenuItem Horizontal
 onClick <
+name <
 backgroundColor #C1C1C3
 color #000
 width 100

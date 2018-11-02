@@ -5,6 +5,7 @@ export class ModalProvider extends React.Component {
   state = {
     showHelp: false,
     showMenu: false,
+    showScreensaver: false,
     showVideo: false
   }
 
@@ -21,6 +22,7 @@ export class ModalProvider extends React.Component {
           toggleItem: this.toggleItem,
           showHelp: state.showHelp,
           showMenu: state.showMenu,
+          showScreensaver: state.showScreensaver,
           showVideo: state.showVideo
         }}
       >

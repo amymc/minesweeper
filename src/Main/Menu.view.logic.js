@@ -1,11 +1,14 @@
 import React from "react"
-import { AppConsumer } from "../App.context"
 import Menu from "./Menu.view.js"
-export default class MenuLogic extends React.Component {
-  componentDidMount = () => {
-    console.log(this.props)
 
+export default class MenuLogic extends React.Component {
+  state = {
+    list: []
+  }
+
+  componentDidMount = () => {
     document.addEventListener("mousedown", this.handleClickOutside)
+    this.composeList(this.props)
   }
 
   componentWillUnmount = () => {
@@ -14,6 +17,33 @@ export default class MenuLogic extends React.Component {
 
   setWrapperRef = node => {
     this.wrapperRef = node
+  }
+
+  composeList = ({ reset, toggleItem }) => {
+    const list = [
+      {
+        title: "New",
+        onClick: reset
+      },
+      {
+        title: "Beginner"
+      },
+      {
+        title: "Intermediate"
+      },
+      {
+        title: "Expert"
+      },
+      {
+        title: "Best Times..."
+      },
+      {
+        title: "Exit",
+        onClick: toggleItem,
+        name: "showScreensaver"
+      }
+    ]
+    this.setState({ list })
   }
 
   /**
@@ -27,15 +57,11 @@ export default class MenuLogic extends React.Component {
     }
   }
   render() {
-    const { props } = this
+    const { props, state } = this
     return (
-      <AppConsumer>
-        {({ list }) => (
-          <div ref={this.setWrapperRef}>
-            <Menu {...props} from={list} />
-          </div>
-        )}
-      </AppConsumer>
+      <div ref={this.setWrapperRef}>
+        <Menu {...props} from={state.list} />
+      </div>
     )
   }
 }

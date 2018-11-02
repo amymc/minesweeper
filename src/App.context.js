@@ -7,33 +7,11 @@ export class AppProvider extends React.Component {
     const height = 8
     const width = 8
     const mines = 10
-    const list = [
-      {
-        title: "New",
-        onClick: this.reset
-      },
-      {
-        title: "Beginner"
-      },
-      {
-        title: "Intermediate"
-      },
-      {
-        title: "Expert"
-      },
-      {
-        title: "Best Times..."
-      },
-      {
-        title: "Exit"
-      }
-    ]
     this.state = {
       grid: this.createGrid(height, width, mines),
       time: 0,
       status: "isStart", //isPlaying, isOver, hasWon
       mood: "isHappy", //isScared, isDead, isCool
-      list,
       mines,
       height,
       width
@@ -221,7 +199,6 @@ export class AppProvider extends React.Component {
           reset: this.reset,
           reveal: this.reveal,
           onMouseUp: this.onMouseUp,
-          list: state.list,
           mood: state.mood,
           grid: state.grid,
           mines: state.mines,

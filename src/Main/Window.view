@@ -9,6 +9,7 @@ MenuBar
 Menu
 onWhen <showMenu
 toggleItem <
+reset <
 
 Header
 # isDead <

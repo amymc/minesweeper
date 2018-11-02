@@ -13,10 +13,7 @@ onWhen <showVideo
 
 HelpModal
 onWhen <showHelp
-# Header
-# # isDead <
-# Board
-# height <
-# width <
-# mines <
-# reveal <
+
+Screensaver
+onWhen <showScreensaver
+
