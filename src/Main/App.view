@@ -11,8 +11,13 @@ showMenu <
 VideoModal
 onWhen <showVideo
 
-HelpModal
+ErrorModal
 onWhen <showHelp
+title Error
+
+ErrorModal
+onWhen <showTimes
+title Best times
 
 Screensaver
 onWhen <showScreensaver

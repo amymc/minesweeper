@@ -1,4 +1,4 @@
-HelpModal Horizontal
+ErrorModal Horizontal
 position absolute
 width 450
 height 134
@@ -14,7 +14,7 @@ paddingBottom 2
 paddingLeft 2
 fontFamily Overpass
 TitleBar
-text Error
+text <title
 
 ErrorWrapper Horizontal
 marginTop 35

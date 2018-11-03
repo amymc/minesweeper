@@ -1,9 +1,9 @@
 import React from "react"
 import { ModalConsumer } from "./Modal.context"
 import { AppConsumer } from "../App.context"
-import HelpModal from "./HelpModal.view.js"
+import ErrorModal from "./ErrorModal.view.js"
 
-export default class HelpModalLogic extends React.Component {
+export default class ErrorModalLogic extends React.Component {
   render() {
     const { props } = this
     return (
@@ -11,7 +11,7 @@ export default class HelpModalLogic extends React.Component {
         {({ reset }) => (
           <ModalConsumer>
             {({ toggleItem }) => (
-              <HelpModal
+              <ErrorModal
                 {...props}
                 toggleItem={toggleItem}
                 playAgain={e => {

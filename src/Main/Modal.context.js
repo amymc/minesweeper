@@ -3,15 +3,16 @@ import React from "react"
 const ModalContext = React.createContext()
 export class ModalProvider extends React.Component {
   state = {
-    showHelp: false,
-    showMenu: false,
-    showScreensaver: false,
-    showVideo: false
+    shouldShow: null //showHelp, showMenu, showScreensaver, showTimes, showVideo
+    // showHelp: false,
+    // showMenu: false,
+    // showScreensaver: false,
+    // showVideo: false
   }
 
   toggleItem = e => {
     if (e.stopPropagation) e.stopPropagation()
-    this.setState({ [e.currentTarget.name]: !this.state[e.currentTarget.name] })
+    this.setState({ shouldShow: e.currentTarget.name })
   }
 
   render() {
@@ -20,10 +21,7 @@ export class ModalProvider extends React.Component {
       <ModalContext.Provider
         value={{
           toggleItem: this.toggleItem,
-          showHelp: state.showHelp,
-          showMenu: state.showMenu,
-          showScreensaver: state.showScreensaver,
-          showVideo: state.showVideo
+          shouldShow: state.shouldShow
         }}
       >
         {props.children}

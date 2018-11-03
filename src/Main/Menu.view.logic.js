@@ -35,7 +35,9 @@ export default class MenuLogic extends React.Component {
         title: "Expert"
       },
       {
-        title: "Best Times..."
+        title: "Best Times...",
+        onClick: toggleItem,
+        name: "showTimes"
       },
       {
         title: "Exit",

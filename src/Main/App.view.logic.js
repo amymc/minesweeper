@@ -7,12 +7,13 @@ export default class AppLogic extends React.Component {
     return (
       <ModalProvider>
         <ModalConsumer>
-          {({ showHelp, showMenu, showScreensaver, showVideo }) => (
+          {({ shouldShow }) => (
             <App
-              showHelp={showHelp}
-              showMenu={showMenu}
-              showScreensaver={showScreensaver}
-              showVideo={showVideo}
+              showHelp={shouldShow === "showHelp"}
+              showMenu={shouldShow === "showMenu"}
+              showScreensaver={shouldShow === "showScreensaver"}
+              showTimes={shouldShow === "showTimes"}
+              showVideo={shouldShow === "showVideo"}
             />
           )}
         </ModalConsumer>
