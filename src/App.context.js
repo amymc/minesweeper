@@ -12,6 +12,7 @@ export class AppProvider extends React.Component {
       time: 0,
       status: "isStart", //isPlaying, isOver, hasWon
       mood: "isHappy", //isScared, isDead, isCool
+      level: "beginner", //intermediate, expert
       mines,
       height,
       width
@@ -199,6 +200,7 @@ export class AppProvider extends React.Component {
           reset: this.reset,
           reveal: this.reveal,
           onMouseUp: this.onMouseUp,
+          level: state.level,
           mood: state.mood,
           grid: state.grid,
           mines: state.mines,

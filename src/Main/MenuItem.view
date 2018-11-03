@@ -10,4 +10,8 @@ when <isHovered
 backgroundColor #0016c0
 color #fff
 Text
+onWhen <isSelected
+text &#10004;
+
+Text
 text <title
