@@ -1,0 +1,14 @@
+MessageWrapper Horizontal
+flexDirection column
+marginLeft 10
+flexShrink 1
+lineHeight 1.3
+marginLeft 10
+width 85%
+MainMessage Text
+text <mainMessage
+
+SecondaryMessage Text
+onWhen
+marginTop 14
+text <secondaryMessage

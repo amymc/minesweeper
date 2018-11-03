@@ -1,7 +1,6 @@
 ErrorModal Horizontal
 position absolute
 width 450
-height 134
 backgroundColor #C1C1C3
 flexShrink 1
 flexDirection column
@@ -17,7 +16,7 @@ TitleBar
 text <title
 
 ErrorWrapper Horizontal
-marginTop 35
+marginTop 20
 marginRight 15
 marginBottom 15
 marginLeft 15
@@ -25,6 +24,7 @@ flexDirection row
 flexBasis auto
 flexGrow 1
 flexShrink 1
+flexWrap wrap
 alignItems center
 ErrorIcon
 onWhen <isError
@@ -32,10 +32,9 @@ onWhen <isError
 WarningIcon
 onWhen <isWarning
 
-ErrorMessage Text
-text <message
-marginLeft 10
-
+MessageWrapper
+mainMessage <
+secondaryMessage <
 
 ButtonWrapper Horizontal
 justifyContent flexEnd
