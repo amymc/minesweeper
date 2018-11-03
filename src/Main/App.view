@@ -14,10 +14,14 @@ onWhen <showVideo
 ErrorModal
 onWhen <showHelp
 title Error
+message You are beyond help
+isError true
 
 ErrorModal
 onWhen <showTimes
 title Best times
+message At your age don't you think you should have more worthwhile aspirations than getting on a Minesweeper leaderboard? </br> Pathetic.
+isWarning true
 
 Screensaver
 onWhen <showScreensaver

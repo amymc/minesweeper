@@ -1,4 +1,4 @@
-ErrorIcon Image
+WarningIcon Image
 alignSelf < auto
 backgroundColor < transparent
 borderTopLeftRadius < 0
@@ -9,6 +9,6 @@ marginTop < 0
 marginBottom < 0
 marginLeft < 0
 marginRight < 0
-source < ./ErrorIcon.png
-width < 37
-height < 35
+source < ./WarningIcon.png
+width < 42
+height < 43

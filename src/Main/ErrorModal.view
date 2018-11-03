@@ -27,9 +27,13 @@ flexGrow 1
 flexShrink 1
 alignItems center
 ErrorIcon
+onWhen <isError
+
+WarningIcon
+onWhen <isWarning
 
 ErrorMessage Text
-text You are beyond help
+text <message
 marginLeft 10
 
 
