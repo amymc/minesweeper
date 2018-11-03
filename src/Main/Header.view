@@ -1,6 +1,17 @@
 Header Horizontal
 justifyContent spaceAround
 alignItems center
+paddingTop 8
+paddingRight 8
+paddingBottom 8
+paddingLeft 8
+marginBottom 10
+borderStyle solid
+borderWidth 3
+borderTopColor #939493
+borderLeftColor #939493
+borderBottomColor #fff
+borderRightColor #fff
 Counter
 mode score
 text <time

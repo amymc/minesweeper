@@ -1,5 +1,11 @@
 Window  Vertical
 backgroundColor #C1C1C3
+borderStyle solid
+borderWidth 3
+borderTopColor #fff
+borderLeftColor #fff
+borderBottomColor #000
+borderRightColor #000
 TitleBar
 hasIcon true
 text Minesweeper
@@ -12,6 +18,22 @@ toggleItem <
 reset <
 level <
 
+Border Horizontal
+flexDirection column
+paddingTop 12
+paddingRight 12
+paddingBottom 12
+paddingLeft 12
+marginTop 3
+marginRight 3
+marginBottom 3
+marginLeft 3
+borderStyle solid
+borderWidth 4
+borderTopColor #fff
+borderLeftColor #fff
+borderBottomColor #939493
+borderRightColor #939493
 Header
 # isDead <
 
