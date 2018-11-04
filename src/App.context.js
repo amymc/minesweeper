@@ -10,7 +10,7 @@ export class AppProvider extends React.Component {
     this.state = {
       grid: this.createGrid(height, width, mines),
       time: 0,
-      status: "isStart", //isPlaying, isOver, hasWon
+      status: "isStart", //isPlaying, hasLost, hasWon
       mood: "isHappy", //isScared, isDead, isCool
       level: "beginner", //intermediate, expert
       mines,
@@ -21,7 +21,6 @@ export class AppProvider extends React.Component {
 
   createGrid = (height, width, mines) => {
     let arr = []
-    debugger
     for (var i = 0; i < width; i++) {
       arr[i] = []
       for (var j = 0; j < height; j++) {
@@ -129,12 +128,12 @@ export class AppProvider extends React.Component {
   }
 
   onMouseUp = () => {
-    const mood = this.state.status === "isOver" ? "isDead" : "isHappy"
+    const mood = this.state.status === "hasLost" ? "isDead" : "isHappy"
     this.setState({ mood })
   }
 
   reveal = (e, cell) => {
-    if (this.state.status === "isOver") return
+    if (this.state.status === "hasLost") return
     //dont reveal on right-click
     if (e.nativeEvent.which === 3) return
     this.setState({ mood: "isScared" })
@@ -150,7 +149,7 @@ export class AppProvider extends React.Component {
       updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
       updatedGrid[cell.x][cell.y].isLosingCell = true
       clearInterval(this.interval)
-      this.setState({ grid: updatedGrid, status: "isOver" })
+      this.setState({ grid: updatedGrid, status: "hasLost" })
     } else if (cell.isEmpty) {
       updatedGrid = this.revealEmpty(cell.x, cell.y, updatedGrid)
       updatedGrid[cell.x][cell.y].isRevealed = true
@@ -184,17 +183,14 @@ export class AppProvider extends React.Component {
     })
   }
 
-  switchLevel = e => {
-    e.preventDefault()
-
+  switchLevel = level => {
     let grid, mines, height, width
-    debugger
-    if (e.currentTarget.name === "intermediate") {
+    if (level === "intermediate") {
       grid = this.createGrid(12, 12, 20)
       mines = 20
       height = 12
       width = 12
-    } else if (e.currentTarget.name === "expert") {
+    } else if (level === "expert") {
       grid = this.createGrid(16, 16, 40)
       mines = 40
       height = 16
@@ -205,7 +201,7 @@ export class AppProvider extends React.Component {
       height = 8
       width = 8
     }
-    this.setState({ grid, mines, height, width, level: e.currentTarget.name })
+    this.setState({ grid, mines, height, width, level })
   }
 
   tick = () => {

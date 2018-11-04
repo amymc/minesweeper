@@ -23,22 +23,31 @@ export default class MenuLogic extends React.Component {
     const list = [
       {
         title: "New",
-        onClick: reset
+        onClick: e => {
+          reset()
+          toggleItem(e)
+        }
       },
       {
         title: "Beginner",
-        onClick: switchLevel,
-        name: "beginner"
+        onClick: e => {
+          switchLevel("beginner")
+          toggleItem(e)
+        }
       },
       {
         title: "Intermediate",
-        onClick: switchLevel,
-        name: "intermediate"
+        onClick: e => {
+          switchLevel("intermediate")
+          toggleItem(e)
+        }
       },
       {
         title: "Expert",
-        onClick: switchLevel,
-        name: "expert"
+        onClick: e => {
+          switchLevel("expert")
+          toggleItem(e)
+        }
       },
       {
         title: "Best Times...",
