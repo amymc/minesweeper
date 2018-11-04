@@ -1,7 +1,7 @@
 Board List
 flexDirection row
-height 208
-width 208
+# height 208
+# width 208
 backgroundColor #C3BFC2
 borderTopColor #7E7D80
 borderTopWidth 4

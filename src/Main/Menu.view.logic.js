@@ -19,20 +19,26 @@ export default class MenuLogic extends React.Component {
     this.wrapperRef = node
   }
 
-  composeList = ({ reset, toggleItem }) => {
+  composeList = ({ reset, switchLevel, toggleItem }) => {
     const list = [
       {
         title: "New",
         onClick: reset
       },
       {
-        title: "Beginner"
+        title: "Beginner",
+        onClick: switchLevel,
+        name: "beginner"
       },
       {
-        title: "Intermediate"
+        title: "Intermediate",
+        onClick: switchLevel,
+        name: "intermediate"
       },
       {
-        title: "Expert"
+        title: "Expert",
+        onClick: switchLevel,
+        name: "expert"
       },
       {
         title: "Best Times...",

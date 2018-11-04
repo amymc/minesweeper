@@ -19,10 +19,9 @@ export class AppProvider extends React.Component {
     }
   }
 
-  // 40 mines 16 * 16 , 99 mines 16 * 30
-
   createGrid = (height, width, mines) => {
     let arr = []
+    debugger
     for (var i = 0; i < width; i++) {
       arr[i] = []
       for (var j = 0; j < height; j++) {
@@ -185,6 +184,30 @@ export class AppProvider extends React.Component {
     })
   }
 
+  switchLevel = e => {
+    e.preventDefault()
+
+    let grid, mines, height, width
+    debugger
+    if (e.currentTarget.name === "intermediate") {
+      grid = this.createGrid(12, 12, 20)
+      mines = 20
+      height = 12
+      width = 12
+    } else if (e.currentTarget.name === "expert") {
+      grid = this.createGrid(16, 16, 40)
+      mines = 40
+      height = 16
+      width = 16
+    } else {
+      grid = this.createGrid(8, 8, 10)
+      mines = 10
+      height = 8
+      width = 8
+    }
+    this.setState({ grid, mines, height, width, level: e.currentTarget.name })
+  }
+
   tick = () => {
     if (this.state.status === "isPlaying") {
       this.setState({ time: this.state.time + 1 })
@@ -200,6 +223,7 @@ export class AppProvider extends React.Component {
           reset: this.reset,
           reveal: this.reveal,
           onMouseUp: this.onMouseUp,
+          switchLevel: this.switchLevel,
           level: state.level,
           mood: state.mood,
           grid: state.grid,

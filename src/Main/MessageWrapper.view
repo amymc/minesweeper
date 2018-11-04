@@ -9,6 +9,6 @@ MainMessage Text
 text <mainMessage
 
 SecondaryMessage Text
-onWhen
+onWhen <secondaryMessage
 marginTop 14
 text <secondaryMessage

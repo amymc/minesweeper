@@ -8,12 +8,13 @@ export default class WindowLogic extends React.Component {
     const { props } = this
     return (
       <AppConsumer>
-        {({ level, reset }) => (
+        {({ level, reset, switchLevel }) => (
           <ModalConsumer>
             {({ toggleItem }) => (
               <Window
                 {...props}
                 toggleItem={toggleItem}
+                switchLevel={switchLevel}
                 reset={reset}
                 level={level}
               />

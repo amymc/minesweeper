@@ -15,6 +15,7 @@ MenuBar
 Menu
 onWhen <showMenu
 toggleItem <
+switchLevel <
 reset <
 level <
 
