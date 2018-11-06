@@ -1,9 +1,13 @@
 Status Horizontal
 justifyContent center
-width 44
-height 44
+width 41
+height 41
 marginLeft 10
 marginRight 10
+borderTopLeftRadius 2
+borderTopRightRadius 2
+borderBottomLeftRadius 2
+borderBottomRightRadius 2
 borderStyle solid
 borderWidth 3
 borderTopColor #939493
@@ -12,7 +16,6 @@ borderBottomColor #1A161A
 borderRightColor #1A161A
 alignItems center
 onClick <
-bottom 2
 onMouseDown <toggleState
 onMouseUp <toggleState
 when <isPressed
@@ -21,8 +24,9 @@ borderLeftColor #1A161A
 borderBottomColor #fff
 borderRightColor #fff
 Face Horizontal
-width 32
-height 32
+width 30
+height 30
+top 1
 alignSelf center
 Smile
 onWhen <isHappy

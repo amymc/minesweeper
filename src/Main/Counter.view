@@ -1,6 +1,6 @@
 Counter Horizontal
 backgroundColor #000100
-height 40
+height 42
 width 69
 color #FF0508
 borderWidth 2
@@ -16,8 +16,9 @@ minWidth 40
 Background
 
 Main Text
+left -1
 fontFamily DigitMono
 fontWeight 400
-fontSize 46
+fontSize 48
 opacity 0.8
 text <

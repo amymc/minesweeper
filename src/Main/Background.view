@@ -1,7 +1,8 @@
 Background Text
 position absolute
+left -1
 fontFamily DigitMono
 fontWeight 400
-fontSize 46
+fontSize 48
 opacity 0.3
 text 888
