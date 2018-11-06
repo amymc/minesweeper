@@ -1,7 +1,7 @@
 Cell Vertical
 justifyContent center
 textAlign center
-height 25
+height 28
 borderTopWidth 2
 borderTopStyle solid
 borderTopColor white
@@ -21,7 +21,7 @@ onContextMenu <
 alignItems center
 flexDirection row
 flexWrap wrap
-width 25
+width 28
 when <isRevealed
 borderTopWidth 1
 borderTopStyle none
@@ -37,8 +37,8 @@ borderBottomStyle dashed
 borderBottomColor black
 Flag
 onWhen <hasFlag
-width 25
-height 25
+width 28
+height 28
 
 Background Vertical
 # width 24
@@ -55,8 +55,8 @@ Mine Vertical
 onWhen <hasMine
 Bomb
 onWhen <isRevealed
-width 25
-height 25
+width 28
+height 28
 
 # Count
 # text 2

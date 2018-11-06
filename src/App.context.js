@@ -36,7 +36,7 @@ export class AppProvider extends React.Component {
       }
     }
 
-    arr = this.placeMines(arr, mines)
+    arr = this.placeMines(arr, mines, height, width)
     arr = this.getNeighbours(arr, height, width)
     return arr
   }
@@ -48,11 +48,11 @@ export class AppProvider extends React.Component {
     this.setState({ mines: this.state.mines - 1 })
   }
 
-  placeMines = (gridArr, mines) => {
+  placeMines = (gridArr, mines, height, width) => {
     let minesPlaced = 0
     while (minesPlaced < mines) {
-      const randomx = Math.floor(Math.random() * 8)
-      const randomy = Math.floor(Math.random() * 8)
+      const randomx = Math.floor(Math.random() * width)
+      const randomy = Math.floor(Math.random() * height)
       if (!gridArr[randomx][randomy].hasMine) {
         gridArr[randomx][randomy].hasMine = true
         minesPlaced++
