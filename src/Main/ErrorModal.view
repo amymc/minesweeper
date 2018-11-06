@@ -37,14 +37,25 @@ mainMessage <
 secondaryMessage <
 
 ButtonWrapper Horizontal
+flexGrow 1
+flexShrink 1
+flexBasis 0%
 justifyContent flexEnd
 marginRight 14
 Button
+onWhen <isError
 text Cry yourself to sleep
 name showVideo
 onClick <toggleItem
 
 Button
+onWhen <isError
 text Play again
 name showHelp
 onClick <playAgain
+
+Button
+onWhen <isWarning
+text ok
+# name showHelp
+onClick <toggleItem
