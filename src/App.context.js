@@ -28,6 +28,7 @@ export class AppProvider extends React.Component {
           x: i,
           y: j,
           hasMine: false,
+          isEmpty: false,
           isRevealed: false,
           isLosingCell: false,
           hasFlag: false,
@@ -124,6 +125,7 @@ export class AppProvider extends React.Component {
     if (x < height - 1 && y > 0) {
       el.push(data[x + 1][y - 1])
     }
+
     return el
   }
 
@@ -161,9 +163,20 @@ export class AppProvider extends React.Component {
   }
 
   revealEmpty(x, y, data) {
-    let area = this.traverseBoard(x, y, data)
+    let area = this.traverseBoard(
+      x,
+      y,
+      data,
+      this.state.height,
+      this.state.width
+    )
+
     area.map(value => {
-      if (!value.isRevealed && (value.isEmpty || !value.hasMine)) {
+      if (
+        !value.hasFlag &&
+        !value.isRevealed &&
+        (value.isEmpty || !value.hasMine)
+      ) {
         data[value.x][value.y].isRevealed = true
         if (value.isEmpty) {
           this.revealEmpty(value.x, value.y, data)
