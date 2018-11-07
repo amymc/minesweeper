@@ -2,8 +2,13 @@ Menu List
 position absolute
 backgroundColor #C1C1C3
 zIndex 2
-height 150
 from <
 top 66
+borderStyle solid
+borderWidth 4
+borderTopColor #fff
+borderLeftColor #fff
+borderBottomColor #939493
+borderRightColor #939493
 MenuItem
 level <
