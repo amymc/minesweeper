@@ -160,6 +160,12 @@ export class AppProvider extends React.Component {
       updatedGrid[cell.x][cell.y].isRevealed = true
       this.setState({ grid: updatedGrid })
     }
+
+    console.log(this.getHidden(updatedGrid).length, this.state.mines)
+    if (this.getHidden(updatedGrid).length === this.state.mines) {
+      clearInterval(this.interval)
+      this.setState({ mood: "isCool" })
+    }
   }
 
   revealEmpty(x, y, data) {
@@ -184,6 +190,14 @@ export class AppProvider extends React.Component {
       }
     })
     return data
+  }
+
+  getHidden = data => {
+    return data
+      .map(datarow => {
+        return datarow.filter(dataitem => !dataitem.isRevealed && dataitem)
+      })
+      .flat()
   }
 
   reset = () => {

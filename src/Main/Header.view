@@ -17,6 +17,7 @@ mode score
 text <time
 
 Status
+isCool <
 isDead <
 isScared <
 isHappy <

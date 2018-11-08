@@ -10,5 +10,5 @@ marginBottom < 0
 marginLeft < 0
 marginRight < 0
 source < ./Cool.png
-width < 407
-height < 409
+width 100%
+height 100%

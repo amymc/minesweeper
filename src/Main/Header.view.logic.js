@@ -4,12 +4,11 @@ import Header from "./Header.view.js"
 
 export default class HeaderLogic extends React.Component {
   render() {
-    const { props } = this
-    // return <Header {...props} text={"010"} />
     return (
       <AppConsumer>
         {({ mood, mines, time, reset }) => (
           <Header
+            isCool={mood === "isCool"}
             isDead={mood === "isDead"}
             isScared={mood === "isScared"}
             isHappy={mood === "isHappy"}
