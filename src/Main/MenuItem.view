@@ -9,9 +9,20 @@ maxWidth 100
 when <isHovered
 backgroundColor #0016c0
 color #fff
-Text
+# Checkmark Vertical
+CheckmarkWhite
+onWhen <isHovered
+width 10
+height 10
+
+CheckmarkBlack
 onWhen <isSelected
-text &#10004;
+width 10
+height 10
+# CheckmarkWhite
+# onWhen <isHovered
+# width 10
+# height 10
 
 Text
 text <title

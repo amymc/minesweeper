@@ -1,25 +1,38 @@
 import React from "react"
 
 const AppContext = React.createContext()
+
+const boards = {
+  beginner: {
+    height: 8,
+    width: 8,
+    mines: 10
+  },
+  intermediate: {
+    height: 12,
+    width: 12,
+    mines: 20
+  },
+  expert: {
+    height: 16,
+    width: 16,
+    mines: 40
+  }
+}
 export class AppProvider extends React.Component {
   constructor(props) {
     super(props)
-    const height = 8
-    const width = 8
-    const mines = 10
     this.state = {
-      grid: this.createGrid(height, width, mines),
+      grid: this.createGrid(boards.beginner),
       time: 0,
       status: "isStart", // isPlaying, hasLost, hasWon
       mood: "isHappy", // isScared, isDead, isCool
       level: "beginner", // intermediate, expert
-      mines,
-      height,
-      width
+      mines: boards.beginner.mines
     }
   }
 
-  createGrid = (height, width, mines) => {
+  createGrid = ({ height, width, mines }) => {
     let arr = []
     for (var i = 0; i < width; i++) {
       arr[i] = []
@@ -210,9 +223,10 @@ export class AppProvider extends React.Component {
   }
 
   reset = () => {
-    const { height, width, mines } = this.state
+    // const { height, width, mines } = this.state
     this.setState({
-      grid: this.createGrid(height, width, mines),
+      grid: this.createGrid(boards[this.state.level]),
+      mines: boards[this.state.level].mines,
       mood: "isHappy",
       status: "isStart",
       time: 0
@@ -220,24 +234,7 @@ export class AppProvider extends React.Component {
   }
 
   switchLevel = level => {
-    let grid, mines, height, width
-    if (level === "intermediate") {
-      grid = this.createGrid(12, 12, 20)
-      mines = 20
-      height = 12
-      width = 12
-    } else if (level === "expert") {
-      grid = this.createGrid(16, 16, 40)
-      mines = 40
-      height = 16
-      width = 16
-    } else {
-      grid = this.createGrid(8, 8, 10)
-      mines = 10
-      height = 8
-      width = 8
-    }
-    this.setState({ grid, mines, height, width, level })
+    this.setState({ level }, this.reset)
   }
 
   tick = () => {
