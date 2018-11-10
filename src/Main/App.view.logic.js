@@ -15,6 +15,7 @@ export default class AppLogic extends React.Component {
               showScreensaver={shouldShow === "showScreensaver"}
               showTimes={shouldShow === "showTimes"}
               showVideo={shouldShow === "showVideo"}
+              preventBgClick={!!shouldShow}
             />
           )}
         </ModalConsumer>

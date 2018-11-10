@@ -4,10 +4,6 @@ const ModalContext = React.createContext()
 export class ModalProvider extends React.Component {
   state = {
     shouldShow: null //showHelp, showMenu, showScreensaver, showTimes, showVideo
-    // showHelp: false,
-    // showMenu: false,
-    // showScreensaver: false,
-    // showVideo: false
   }
 
   toggleItem = e => {
