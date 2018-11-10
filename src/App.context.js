@@ -137,7 +137,12 @@ export class AppProvider extends React.Component {
   }
 
   onMouseUp = () => {
-    const mood = this.state.status === "hasLost" ? "isDead" : "isHappy"
+    const mood =
+      this.state.status === "hasLost"
+        ? "isDead"
+        : this.state.status === "hasWon"
+        ? "isCool"
+        : "isHappy"
     this.setState({ mood })
   }
 
@@ -168,9 +173,11 @@ export class AppProvider extends React.Component {
       this.setState({ grid: updatedGrid })
     }
 
+    console.log(this.getHidden(updatedGrid).length, this.state.mines)
+
     if (this.getHidden(updatedGrid).length === this.state.mines) {
       clearInterval(this.interval)
-      this.setState({ mood: "isCool" })
+      this.setState({ status: "hasWon" })
     }
   }
 
