@@ -1,24 +1,8 @@
 import React from "react"
+import boards from "./boardsConfig"
 
 const AppContext = React.createContext()
 
-const boards = {
-  beginner: {
-    height: 8,
-    width: 8,
-    mines: 10
-  },
-  intermediate: {
-    height: 12,
-    width: 12,
-    mines: 20
-  },
-  expert: {
-    height: 16,
-    width: 16,
-    mines: 40
-  }
-}
 export class AppProvider extends React.Component {
   constructor(props) {
     super(props)
@@ -55,18 +39,18 @@ export class AppProvider extends React.Component {
     return arr
   }
 
-  placeFlag = (e, cell) => {
+  placeFlag = (e, { x, y }) => {
     if (this.state.status === "hasLost") return
     e.preventDefault()
     let updatedGrid = this.state.grid
     let mines = this.state.mines
-    if (updatedGrid[cell.x][cell.y].hasIcon === "question") {
-      updatedGrid[cell.x][cell.y].hasIcon = null
-    } else if (updatedGrid[cell.x][cell.y].hasIcon === "flag") {
-      updatedGrid[cell.x][cell.y].hasIcon = "question"
+    if (updatedGrid[x][y].hasIcon === "question") {
+      updatedGrid[x][y].hasIcon = null
+    } else if (updatedGrid[x][y].hasIcon === "flag") {
+      updatedGrid[x][y].hasIcon = "question"
       mines++
     } else {
-      updatedGrid[cell.x][cell.y].hasIcon = "flag"
+      updatedGrid[x][y].hasIcon = "flag"
       mines--
     }
     this.setState({ mines })
@@ -157,7 +141,7 @@ export class AppProvider extends React.Component {
     this.setState({ mood })
   }
 
-  reveal = (e, cell) => {
+  reveal = (e, { x, y, hasMine, isEmpty }) => {
     if (this.state.status === "hasLost") return
     //dont reveal on right-click
     if (e.nativeEvent.which === 3) return
@@ -170,17 +154,17 @@ export class AppProvider extends React.Component {
 
     let updatedGrid = this.state.grid
 
-    if (cell.hasMine) {
+    if (hasMine) {
       updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
-      updatedGrid[cell.x][cell.y].isLosingCell = true
+      updatedGrid[x][y].isLosingCell = true
       clearInterval(this.interval)
       this.setState({ grid: updatedGrid, status: "hasLost" })
-    } else if (cell.isEmpty) {
-      updatedGrid = this.revealEmpty(cell.x, cell.y, updatedGrid)
-      updatedGrid[cell.x][cell.y].isRevealed = true
+    } else if (isEmpty) {
+      updatedGrid = this.revealEmpty(x, y, updatedGrid)
+      updatedGrid[x][y].isRevealed = true
       this.setState({ grid: updatedGrid })
     } else {
-      updatedGrid[cell.x][cell.y].isRevealed = true
+      updatedGrid[x][y].isRevealed = true
       this.setState({ grid: updatedGrid })
     }
 
@@ -195,8 +179,8 @@ export class AppProvider extends React.Component {
       x,
       y,
       data,
-      this.state.height,
-      this.state.width
+      boards[this.state.level].height,
+      boards[this.state.level].width
     )
 
     area.map(value => {
@@ -223,7 +207,6 @@ export class AppProvider extends React.Component {
   }
 
   reset = () => {
-    // const { height, width, mines } = this.state
     this.setState({
       grid: this.createGrid(boards[this.state.level]),
       mines: boards[this.state.level].mines,
