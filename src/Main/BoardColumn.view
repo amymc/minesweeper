@@ -1,6 +1,6 @@
 BoardColumn List
 width 28
-from <item
+from <column
 pass item
 Cell
 onClick <reveal
