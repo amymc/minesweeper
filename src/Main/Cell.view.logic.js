@@ -7,10 +7,10 @@ class CellLogic extends React.Component {
     neighbour === 1
       ? "#0E00FF"
       : neighbour === 2
-        ? "#048001"
-        : neighbour === 3
-          ? "#ea3a32"
-          : "#060084"
+      ? "#048001"
+      : neighbour === 3
+      ? "#ea3a32"
+      : "#060084"
 
   render() {
     const { item } = this.props
@@ -24,6 +24,9 @@ class CellLogic extends React.Component {
             onMouseDown={e => reveal(e, item)}
             onContextMenu={e => placeFlag(e, item)}
             color={this.getColor(item.neighbour)}
+            shouldShowFlag={!item.isRevealed && item.hasIcon === "flag"}
+            shouldShowQuestion={!item.isRevealed && item.hasIcon === "question"}
+            shouldShowMine={item.isRevealed && item.hasMine}
             shouldShowCount={item.isRevealed && !item.isEmpty && !item.hasMine}
           />
         )}

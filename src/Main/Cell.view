@@ -22,6 +22,9 @@ alignItems center
 flexDirection row
 flexWrap wrap
 width 28
+backgroundColor #C3BFC2
+when <isLosingCell
+backgroundColor red
 when <isRevealed
 borderTopWidth 1
 borderTopStyle none
@@ -36,35 +39,22 @@ borderBottomWidth 1
 borderBottomStyle dashed
 borderBottomColor black
 Flag
-onWhen <hasFlag
+onWhen <shouldShowFlag
 width 28
 height 28
 
-Background Vertical
-# width 24
-# height 24
-backgroundColor #C3BFC2
-when <isLosingCell
-backgroundColor red
+Question
+onWhen <shouldShowQuestion
+width 20
+height 20
+
 Count
 # onWhen <!hasMine
 onWhen <shouldShowCount
 text <neighbour
 color <
 
-Mine Vertical
-onWhen <hasMine
 Bomb
-onWhen <isRevealed
-width 28
-height 28
-
-# Count
-# text 2
-# color #048001
-# Count
-# text 3
-# color #048001
-# Count
-# text 4
-# color #060084
+onWhen <shouldShowMine
+width 26
+height 26

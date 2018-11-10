@@ -10,9 +10,9 @@ export class AppProvider extends React.Component {
     this.state = {
       grid: this.createGrid(height, width, mines),
       time: 0,
-      status: "isStart", //isPlaying, hasLost, hasWon
-      mood: "isHappy", //isScared, isDead, isCool
-      level: "beginner", //intermediate, expert
+      status: "isStart", // isPlaying, hasLost, hasWon
+      mood: "isHappy", // isScared, isDead, isCool
+      level: "beginner", // intermediate, expert
       mines,
       height,
       width
@@ -31,7 +31,7 @@ export class AppProvider extends React.Component {
           isEmpty: false,
           isRevealed: false,
           isLosingCell: false,
-          hasFlag: false,
+          hasIcon: null, // flag, question
           neighbour: 0
         }
       }
@@ -43,10 +43,20 @@ export class AppProvider extends React.Component {
   }
 
   placeFlag = (e, cell) => {
+    if (this.state.status === "hasLost") return
     e.preventDefault()
     let updatedGrid = this.state.grid
-    updatedGrid[cell.x][cell.y].hasFlag = true
-    this.setState({ mines: this.state.mines - 1 })
+    let mines = this.state.mines
+    if (updatedGrid[cell.x][cell.y].hasIcon === "question") {
+      updatedGrid[cell.x][cell.y].hasIcon = null
+    } else if (updatedGrid[cell.x][cell.y].hasIcon === "flag") {
+      updatedGrid[cell.x][cell.y].hasIcon = "question"
+      mines++
+    } else {
+      updatedGrid[cell.x][cell.y].hasIcon = "flag"
+      mines--
+    }
+    this.setState({ mines })
   }
 
   placeMines = (gridArr, mines, height, width) => {
@@ -161,7 +171,6 @@ export class AppProvider extends React.Component {
       this.setState({ grid: updatedGrid })
     }
 
-    console.log(this.getHidden(updatedGrid).length, this.state.mines)
     if (this.getHidden(updatedGrid).length === this.state.mines) {
       clearInterval(this.interval)
       this.setState({ mood: "isCool" })
@@ -179,7 +188,7 @@ export class AppProvider extends React.Component {
 
     area.map(value => {
       if (
-        !value.hasFlag &&
+        !value.hasIcon &&
         !value.isRevealed &&
         (value.isEmpty || !value.hasMine)
       ) {
