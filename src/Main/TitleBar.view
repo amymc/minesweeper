@@ -24,3 +24,5 @@ color #FFF
 text < Minesweeper
 
 CloseButton
+onClick <
+isActive <

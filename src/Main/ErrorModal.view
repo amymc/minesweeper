@@ -14,6 +14,8 @@ paddingLeft 2
 fontFamily Overpass
 TitleBar
 text <title
+onClick <toggleItem
+isActive true
 
 ErrorWrapper Horizontal
 marginTop 20
@@ -51,7 +53,6 @@ onClick <toggleItem
 Button
 onWhen <isError
 text Play again
-name showHelp
 onClick <playAgain
 
 Button

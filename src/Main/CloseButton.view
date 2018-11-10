@@ -1,5 +1,7 @@
 CloseButton Horizontal
 onClick <
+onMouseDown <toggleState
+onMouseUp <toggleState
 height 22
 alignSelf center
 justifyContent center
@@ -18,18 +20,16 @@ borderTopColor #fff
 borderTopWidth 2
 borderTopStyle solid
 width 22
+when <isPressed
+borderBottomColor #fff
+borderRightColor #fff
+borderLeftColor #000
+borderTopColor #000
 Text
 text ✕
 color #7F7F7F
 fontFamily Arial
 fontWeight 800
 zIndex 1
-
-Text
-text ✕
-color #fefefe
-fontFamily Arial
-fontWeight 800
-position absolute
-bottom -1
-right 1
+when <isActive
+color #000
