@@ -49,8 +49,8 @@ width 20
 height 20
 
 Count
-# onWhen <!hasMine
-onWhen <shouldShowCount
+onWhen <!hasMine
+# onWhen <shouldShowCount
 text <neighbour
 color <
 

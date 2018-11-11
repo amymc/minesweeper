@@ -9,7 +9,7 @@ export class AppProvider extends React.Component {
     this.state = {
       grid: this.createGrid(boards.beginner),
       time: 0,
-      status: "isStart", // isPlaying, hasLost, hasWon
+      status: "isStart", // isPlaying hasLost, hasWon
       mood: "isHappy", // isScared, isDead, isCool
       level: "beginner", // intermediate, expert
       mines: boards.beginner.mines
@@ -42,18 +42,28 @@ export class AppProvider extends React.Component {
   placeFlag = (e, { x, y }) => {
     if (this.state.status === "hasLost") return
     e.preventDefault()
-    let updatedGrid = this.state.grid
+
+    const column = JSON.parse(JSON.stringify(this.state.grid[x]))
     let mines = this.state.mines
-    if (updatedGrid[x][y].hasIcon === "question") {
-      updatedGrid[x][y].hasIcon = null
-    } else if (updatedGrid[x][y].hasIcon === "flag") {
-      updatedGrid[x][y].hasIcon = "question"
+
+    if (column[y].hasIcon === "question") {
+      column[y].hasIcon = null
+    } else if (column[y].hasIcon === "flag") {
+      column[y].hasIcon = "question"
       mines++
     } else {
-      updatedGrid[x][y].hasIcon = "flag"
+      column[y].hasIcon = "flag"
       mines--
     }
-    this.setState({ mines })
+
+    this.setState({
+      grid: [
+        ...this.state.grid.slice(0, x),
+        column,
+        ...this.state.grid.slice(x + 1)
+      ],
+      mines
+    })
   }
 
   placeMines = (gridArr, mines, height, width) => {
@@ -147,38 +157,32 @@ export class AppProvider extends React.Component {
   }
 
   reveal = (e, { x, y, hasMine, isEmpty }) => {
-    if (this.state.status === "hasLost") return
-    //dont reveal on right-click
-    if (e.nativeEvent.which === 3) return
-    this.setState({ mood: "isScared" })
-
-    if (this.state.status === "isStart") {
-      this.setState({ status: "isPlaying" })
-      this.interval = setInterval(this.tick.bind(this), 1000)
-    }
-
-    let updatedGrid = this.state.grid
-
-    if (hasMine) {
-      updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
-      updatedGrid[x][y].isLosingCell = true
-      clearInterval(this.interval)
-      this.setState({ grid: updatedGrid, status: "hasLost" })
-    } else if (isEmpty) {
-      updatedGrid = this.revealEmpty(x, y, updatedGrid)
-      updatedGrid[x][y].isRevealed = true
-      this.setState({ grid: updatedGrid })
-    } else {
-      updatedGrid[x][y].isRevealed = true
-      this.setState({ grid: updatedGrid })
-    }
-
-    console.log(this.getHidden(updatedGrid).length, this.state.mines)
-
-    if (this.getHidden(updatedGrid).length === this.state.mines) {
-      clearInterval(this.interval)
-      this.setState({ status: "hasWon" })
-    }
+    //   if (this.state.status === "hasLost") return
+    //   //dont reveal on right-click
+    //   if (e.nativeEvent.which === 3) return
+    //   // this.setState({ mood: "isScared" })
+    //   if (this.state.status === "isStart") {
+    //     this.setState({ status: "isPlaying" })
+    //     this.interval = setInterval(this.tick.bind(this), 1000)
+    //   }
+    //   let updatedGrid = this.state.grid
+    //   if (hasMine) {
+    //     updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
+    //     updatedGrid[x][y].isLosingCell = true
+    //     clearInterval(this.interval)
+    //     // this.setState({ grid: updatedGrid, status: "hasLost" })
+    //   } else if (isEmpty) {
+    //     updatedGrid = this.revealEmpty(x, y, updatedGrid)
+    //     updatedGrid[x][y].isRevealed = true
+    //     // this.setState({ grid: updatedGrid })
+    //   } else {
+    //     updatedGrid[x][y].isRevealed = true
+    //     // this.setState({ grid: updatedGrid })
+    //   }
+    //   if (this.getHidden(updatedGrid).length === this.state.mines) {
+    //     clearInterval(this.interval)
+    //     // this.setState({ status: "hasWon" })
+    //   }
   }
 
   revealEmpty(x, y, data) {
@@ -190,7 +194,7 @@ export class AppProvider extends React.Component {
       boards[this.state.level].width
     )
 
-    area.map(value => {
+    area.forEach(value => {
       if (
         !value.hasIcon &&
         !value.isRevealed &&
@@ -205,22 +209,18 @@ export class AppProvider extends React.Component {
     return data
   }
 
-  getHidden = data => {
-    return data
-      .map(datarow => {
-        return datarow.filter(dataitem => !dataitem.isRevealed && dataitem)
-      })
-      .flat()
-  }
+  getHidden = data =>
+    data.map(datarow => datarow.filter(dataitem => !dataitem.isRevealed)).flat()
 
   reset = () => {
-    this.setState({
-      grid: this.createGrid(boards[this.state.level]),
-      mines: boards[this.state.level].mines,
-      mood: "isHappy",
-      status: "isStart",
-      time: 0
-    })
+    // this.setState({
+    //   grid: this.createGrid(boards[this.state.level]),
+    //   mines: boards[this.state.level].mines,
+    //   mood: "isHappy",
+    //   status: "isStart",
+    //   time: 0
+    // })
+    clearInterval(this.interval)
   }
 
   switchLevel = level => {
@@ -228,9 +228,7 @@ export class AppProvider extends React.Component {
   }
 
   tick = () => {
-    if (this.state.status === "isPlaying") {
-      this.setState({ time: this.state.time + 1 })
-    }
+    // this.setState({ time: this.state.time + 1 })
   }
 
   render() {
