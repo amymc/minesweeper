@@ -120,19 +120,6 @@ export class AppProvider extends React.Component {
       [x + 1, y - 1]
     ]
 
-    // const neighbours = coords
-    //   .map(coord => {
-    //     if (
-    //       coord[0] < 0 ||
-    //       coord[0] > height - 1 ||
-    //       coord[1] < 0 ||
-    //       coord[1] > width - 1
-    //     )
-    //       return false
-    //     return data[coord[0]][coord[1]]
-    //   })
-    //   .filter(Boolean)
-
     const filteredCoordinates = coordinates.filter(
       coord =>
         coord[0] > 0 &&
