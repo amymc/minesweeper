@@ -109,41 +109,39 @@ export class AppProvider extends React.Component {
 
   // looks for neighbouring cells and returns them
   traverseBoard(x, y, data, height, width) {
-    const el = []
-    //up
-    if (x > 0) {
-      el.push(data[x - 1][y])
-    }
-    //down
-    if (x < height - 1) {
-      el.push(data[x + 1][y])
-    }
-    //left
-    if (y > 0) {
-      el.push(data[x][y - 1])
-    }
-    //right
-    if (y < width - 1) {
-      el.push(data[x][y + 1])
-    }
-    // top left
-    if (x > 0 && y > 0) {
-      el.push(data[x - 1][y - 1])
-    }
-    // top right
-    if (x > 0 && y < width - 1) {
-      el.push(data[x - 1][y + 1])
-    }
-    // bottom right
-    if (x < height - 1 && y < width - 1) {
-      el.push(data[x + 1][y + 1])
-    }
-    // bottom left
-    if (x < height - 1 && y > 0) {
-      el.push(data[x + 1][y - 1])
-    }
+    const coordinates = [
+      [x - 1, y],
+      [x + 1, y],
+      [x, y - 1],
+      [x, y + 1],
+      [x - 1, y - 1],
+      [x - 1, y + 1],
+      [x + 1, y + 1],
+      [x + 1, y - 1]
+    ]
 
-    return el
+    // const neighbours = coords
+    //   .map(coord => {
+    //     if (
+    //       coord[0] < 0 ||
+    //       coord[0] > height - 1 ||
+    //       coord[1] < 0 ||
+    //       coord[1] > width - 1
+    //     )
+    //       return false
+    //     return data[coord[0]][coord[1]]
+    //   })
+    //   .filter(Boolean)
+
+    const filteredCoordinates = coordinates.filter(
+      coord =>
+        coord[0] > 0 &&
+        coord[0] < height - 1 &&
+        coord[1] > 0 &&
+        coord[1] < width - 1
+    )
+
+    return filteredCoordinates.map(coord => data[coord[0]][coord[1]])
   }
 
   onMouseUp = () => {
@@ -157,32 +155,32 @@ export class AppProvider extends React.Component {
   }
 
   reveal = (e, { x, y, hasMine, isEmpty }) => {
-    //   if (this.state.status === "hasLost") return
-    //   //dont reveal on right-click
-    //   if (e.nativeEvent.which === 3) return
-    //   // this.setState({ mood: "isScared" })
-    //   if (this.state.status === "isStart") {
-    //     this.setState({ status: "isPlaying" })
-    //     this.interval = setInterval(this.tick.bind(this), 1000)
-    //   }
-    //   let updatedGrid = this.state.grid
-    //   if (hasMine) {
-    //     updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
-    //     updatedGrid[x][y].isLosingCell = true
-    //     clearInterval(this.interval)
-    //     // this.setState({ grid: updatedGrid, status: "hasLost" })
-    //   } else if (isEmpty) {
-    //     updatedGrid = this.revealEmpty(x, y, updatedGrid)
-    //     updatedGrid[x][y].isRevealed = true
-    //     // this.setState({ grid: updatedGrid })
-    //   } else {
-    //     updatedGrid[x][y].isRevealed = true
-    //     // this.setState({ grid: updatedGrid })
-    //   }
-    //   if (this.getHidden(updatedGrid).length === this.state.mines) {
-    //     clearInterval(this.interval)
-    //     // this.setState({ status: "hasWon" })
-    //   }
+    if (this.state.status === "hasLost") return
+    //dont reveal on right-click
+    if (e.nativeEvent.which === 3) return
+    // this.setState({ mood: "isScared" })
+    if (this.state.status === "isStart") {
+      this.setState({ status: "isPlaying" })
+      this.interval = setInterval(this.tick.bind(this), 1000)
+    }
+    let updatedGrid = this.state.grid
+    if (hasMine) {
+      updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
+      updatedGrid[x][y].isLosingCell = true
+      clearInterval(this.interval)
+      // this.setState({ grid: updatedGrid, status: "hasLost" })
+    } else if (isEmpty) {
+      updatedGrid = this.revealEmpty(x, y, updatedGrid)
+      updatedGrid[x][y].isRevealed = true
+      // this.setState({ grid: updatedGrid })
+    } else {
+      updatedGrid[x][y].isRevealed = true
+      // this.setState({ grid: updatedGrid })
+    }
+    if (this.getHidden(updatedGrid).length === this.state.mines) {
+      clearInterval(this.interval)
+      // this.setState({ status: "hasWon" })
+    }
   }
 
   revealEmpty(x, y, data) {
