@@ -122,10 +122,7 @@ export class AppProvider extends React.Component {
 
     const filteredCoordinates = coordinates.filter(
       coord =>
-        coord[0] > 0 &&
-        coord[0] < height - 1 &&
-        coord[1] > 0 &&
-        coord[1] < width - 1
+        coord[0] >= 0 && coord[0] < height && coord[1] >= 0 && coord[1] < width
     )
 
     return filteredCoordinates.map(coord => data[coord[0]][coord[1]])
@@ -145,7 +142,7 @@ export class AppProvider extends React.Component {
     if (this.state.status === "hasLost") return
     //dont reveal on right-click
     if (e.nativeEvent.which === 3) return
-    // this.setState({ mood: "isScared" })
+    this.setState({ mood: "isScared" })
     if (this.state.status === "isStart") {
       this.setState({ status: "isPlaying" })
       this.interval = setInterval(this.tick.bind(this), 1000)
@@ -155,18 +152,18 @@ export class AppProvider extends React.Component {
       updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
       updatedGrid[x][y].isLosingCell = true
       clearInterval(this.interval)
-      // this.setState({ grid: updatedGrid, status: "hasLost" })
+      this.setState({ grid: updatedGrid, status: "hasLost" })
     } else if (isEmpty) {
       updatedGrid = this.revealEmpty(x, y, updatedGrid)
       updatedGrid[x][y].isRevealed = true
-      // this.setState({ grid: updatedGrid })
+      this.setState({ grid: updatedGrid })
     } else {
       updatedGrid[x][y].isRevealed = true
-      // this.setState({ grid: updatedGrid })
+      this.setState({ grid: updatedGrid })
     }
     if (this.getHidden(updatedGrid).length === this.state.mines) {
       clearInterval(this.interval)
-      // this.setState({ status: "hasWon" })
+      this.setState({ status: "hasWon" })
     }
   }
 
@@ -186,11 +183,13 @@ export class AppProvider extends React.Component {
         (value.isEmpty || !value.hasMine)
       ) {
         data[value.x][value.y].isRevealed = true
+
         if (value.isEmpty) {
           this.revealEmpty(value.x, value.y, data)
         }
       }
     })
+    // debugger
     return data
   }
 
@@ -198,13 +197,13 @@ export class AppProvider extends React.Component {
     data.map(datarow => datarow.filter(dataitem => !dataitem.isRevealed)).flat()
 
   reset = () => {
-    // this.setState({
-    //   grid: this.createGrid(boards[this.state.level]),
-    //   mines: boards[this.state.level].mines,
-    //   mood: "isHappy",
-    //   status: "isStart",
-    //   time: 0
-    // })
+    this.setState({
+      grid: this.createGrid(boards[this.state.level]),
+      mines: boards[this.state.level].mines,
+      mood: "isHappy",
+      status: "isStart",
+      time: 0
+    })
     clearInterval(this.interval)
   }
 
