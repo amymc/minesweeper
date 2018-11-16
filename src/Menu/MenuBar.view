@@ -30,7 +30,6 @@ backgroundColor transparent
 paddingLeft 8
 paddingRight 8
 paddingBottom 8
-# marginLeft 18
 when <isHovered
 color #fff
 backgroundColor #0016c0

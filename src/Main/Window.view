@@ -37,10 +37,7 @@ borderLeftColor #fff
 borderBottomColor #939493
 borderRightColor #939493
 Header
-# isDead <
 
 Board
-height <
-width <
-mines <
+grid <
 reveal <

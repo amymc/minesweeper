@@ -9,7 +9,6 @@ flexDirection column
 backgroundColor #C1C1C3
 zIndex 2
 overflowY auto
-# justifyContent spaceBetween
 alignItems center
 TitleBar
 text Cry baby

@@ -1,7 +1,5 @@
 Board List
 flexDirection row
-# height 208
-# width 208
 backgroundColor #C3BFC2
 borderTopColor #7E7D80
 borderTopWidth 4
@@ -15,17 +13,8 @@ borderRightStyle solid
 borderBottomColor #FEFCFF
 borderBottomWidth 4
 borderBottomStyle solid
-# FEFCFF
 from <grid
 pass column
 BoardColumn
 reveal <
-# Cell
-# Board Table
-# height 200
-# width 200
-# rowHeight 20
-# from <grid
-# # BoardColumn
-# Cell
-# isCell true
+
