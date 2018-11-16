@@ -21,7 +21,7 @@ fontWeight 700
 fontSize 30
 letterSpacing 1.7
 color #FFF
-text < Minesweeper
+text <
 
 CloseButton
 onClick <

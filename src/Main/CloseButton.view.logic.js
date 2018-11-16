@@ -15,7 +15,7 @@ export default class CloseButtonLogic extends React.Component {
     return (
       <CloseButton
         {...props}
-        isPressed={state.isPressed}
+        isPressed={state.isPressed && props.isActive}
         toggleState={this.toggleState}
       />
     )

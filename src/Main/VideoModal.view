@@ -13,6 +13,7 @@ overflowY auto
 alignItems center
 TitleBar
 text Cry baby
+isActive true
 onClick <
 
 CryBaby

@@ -8,6 +8,7 @@ borderBottomColor #000
 borderRightColor #000
 TitleBar
 hasIcon true
+isActive false
 text Minesweeper
 
 MenuBar
