@@ -141,39 +141,41 @@ export class AppProvider extends React.Component {
   }
 
   reveal = (e, { x, y, hasMine, isEmpty }) => {
-    if (this.state.status === "hasLost") return
     //dont reveal on right-click
-    if (e.nativeEvent.which === 3) return
+    if (e.nativeEvent.which === 3 || this.state.status === "hasLost") return
+    let updatedGrid = JSON.parse(JSON.stringify(this.state.grid))
     this.setState({ mood: "isScared" })
+
     if (this.state.status === "isStart") {
       this.setState({ status: "isPlaying" })
       this.interval = setInterval(this.tick.bind(this), 1000)
     }
-    let updatedGrid = this.state.grid
+
     if (hasMine) {
       updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
       updatedGrid[x][y].isLosingCell = true
       clearInterval(this.interval)
-      this.setState({ grid: updatedGrid, status: "hasLost" })
+      this.setState({ status: "hasLost" })
     } else if (isEmpty) {
-      updatedGrid = this.revealEmpty(x, y, updatedGrid)
-      updatedGrid[x][y].isRevealed = true
-      this.setState({ grid: updatedGrid })
+      this.revealEmpty(x, y, updatedGrid)
+      // updatedGrid[x][y].isRevealed = true
     } else {
       updatedGrid[x][y].isRevealed = true
-      this.setState({ grid: updatedGrid })
     }
+
     if (this.getHidden(updatedGrid).length === this.state.mines) {
       clearInterval(this.interval)
       this.setState({ status: "hasWon" })
+    } else {
+      this.setState({ grid: updatedGrid })
     }
   }
 
-  revealEmpty(x, y, data) {
+  revealEmpty(x, y, grid) {
     let area = this.traverseBoard(
       x,
       y,
-      data,
+      grid,
       boards[this.state.level].height,
       boards[this.state.level].width
     )
@@ -184,15 +186,14 @@ export class AppProvider extends React.Component {
         !value.isRevealed &&
         (value.isEmpty || !value.hasMine)
       ) {
-        data[value.x][value.y].isRevealed = true
+        grid[value.x][value.y].isRevealed = true
 
         if (value.isEmpty) {
-          this.revealEmpty(value.x, value.y, data)
+          this.revealEmpty(value.x, value.y, grid)
         }
       }
     })
-    // debugger
-    return data
+    return grid
   }
 
   getHidden = data =>
@@ -214,7 +215,7 @@ export class AppProvider extends React.Component {
   }
 
   tick = () => {
-    // this.setState({ time: this.state.time + 1 })
+    this.setState({ time: this.state.time + 1 })
   }
 
   render() {
