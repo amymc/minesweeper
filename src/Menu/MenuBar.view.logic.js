@@ -1,5 +1,5 @@
 import React from "react"
-import { ModalConsumer } from "./Modal.context"
+import { ModalConsumer } from "../Modal.context"
 import MenuBar from "./MenuBar.view.js"
 
 export default class MenuBarLogic extends React.Component {
