@@ -17,26 +17,28 @@ export class AppProvider extends React.Component {
   }
 
   createGrid = ({ height, width, mines }) => {
-    let arr = []
-    for (var i = 0; i < width; i++) {
-      arr[i] = []
-      for (var j = 0; j < height; j++) {
-        arr[i][j] = {
-          x: i,
-          y: j,
-          hasMine: false,
-          isEmpty: false,
-          isRevealed: false,
-          isLosingCell: false,
-          hasIcon: null, // flag, question
-          neighbour: 0
-        }
-      }
-    }
+    const cell = (i, j) => ({
+      x: i,
+      y: j,
+      hasMine: false,
+      isEmpty: false,
+      isRevealed: false,
+      isLosingCell: false,
+      hasIcon: null, // flag, question
+      neighbour: 0
+    })
 
-    arr = this.placeMines(arr, mines, height, width)
-    arr = this.getNeighbours(arr, height, width)
-    return arr
+    const grid = Array(width)
+      .fill(0)
+      .map((_, i) =>
+        Array(height)
+          .fill(0)
+          .map((_, j) => cell(i, j))
+      )
+
+    this.placeMines(grid, mines, height, width)
+    this.getNeighbours(grid, height, width)
+    return grid
   }
 
   placeFlag = (e, { x, y }) => {
