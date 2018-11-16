@@ -1,5 +1,6 @@
 import React from "react"
 import Menu from "./Menu.view.js"
+import composeList from "../composeList.js"
 
 export default class MenuLogic extends React.Component {
   state = {
@@ -8,7 +9,7 @@ export default class MenuLogic extends React.Component {
 
   componentDidMount = () => {
     document.addEventListener("mousedown", this.handleClickOutside)
-    this.composeList(this.props)
+    this.setState({ list: composeList(this.props) })
   }
 
   componentWillUnmount = () => {
@@ -17,50 +18,6 @@ export default class MenuLogic extends React.Component {
 
   setWrapperRef = node => {
     this.wrapperRef = node
-  }
-
-  composeList = ({ reset, switchLevel, toggleItem }) => {
-    const list = [
-      {
-        title: "New",
-        onClick: e => {
-          reset()
-          toggleItem(e)
-        }
-      },
-      {
-        title: "Beginner",
-        onClick: e => {
-          switchLevel("beginner")
-          toggleItem(e)
-        }
-      },
-      {
-        title: "Intermediate",
-        onClick: e => {
-          switchLevel("intermediate")
-          toggleItem(e)
-        }
-      },
-      {
-        title: "Expert",
-        onClick: e => {
-          switchLevel("expert")
-          toggleItem(e)
-        }
-      },
-      {
-        title: "Best Times...",
-        onClick: toggleItem,
-        name: "showTimes"
-      },
-      {
-        title: "Exit",
-        onClick: toggleItem,
-        name: "showScreensaver"
-      }
-    ]
-    this.setState({ list })
   }
 
   /**

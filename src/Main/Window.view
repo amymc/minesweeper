@@ -12,6 +12,7 @@ isActive false
 text Minesweeper
 
 MenuBar
+toggleItem <
 
 Menu
 onWhen <showMenu
