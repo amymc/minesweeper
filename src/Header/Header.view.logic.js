@@ -2,22 +2,22 @@ import React from "react"
 import { AppConsumer } from "../App.context"
 import Header from "./Header.view.js"
 
-export default class HeaderLogic extends React.Component {
-  render() {
-    return (
-      <AppConsumer>
-        {({ mood, mines, time, reset }) => (
-          <Header
-            isCool={mood === "isCool"}
-            isDead={mood === "isDead"}
-            isScared={mood === "isScared"}
-            isHappy={mood === "isHappy"}
-            numMines={mines.toString().padStart(3, "0")}
-            time={time.toString().padStart(3, "0")}
-            reset={reset}
-          />
-        )}
-      </AppConsumer>
-    )
-  }
+const HeaderLogic = props => {
+  return (
+    <AppConsumer>
+      {({ mood, mines, time, reset }) => (
+        <Header
+          isCool={mood === "isCool"}
+          isDead={mood === "isDead"}
+          isScared={mood === "isScared"}
+          isHappy={mood === "isHappy"}
+          numMines={mines.toString().padStart(3, "0")}
+          time={time.toString().padStart(3, "0")}
+          reset={reset}
+        />
+      )}
+    </AppConsumer>
+  )
 }
+
+export default HeaderLogic
