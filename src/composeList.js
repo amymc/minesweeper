@@ -2,6 +2,7 @@ export default ({ reset, switchLevel, toggleItem }) => {
   return [
     {
       title: "New",
+      hasBottomBorder: true,
       onClick: e => {
         reset()
         toggleItem(e)
@@ -9,6 +10,7 @@ export default ({ reset, switchLevel, toggleItem }) => {
     },
     {
       title: "Beginner",
+      hasTopBorder: true,
       onClick: e => {
         switchLevel("beginner")
         toggleItem(e)
@@ -23,6 +25,7 @@ export default ({ reset, switchLevel, toggleItem }) => {
     },
     {
       title: "Expert",
+      hasBottomBorder: true,
       onClick: e => {
         switchLevel("expert")
         toggleItem(e)
@@ -30,11 +33,14 @@ export default ({ reset, switchLevel, toggleItem }) => {
     },
     {
       title: "Best Times...",
+      hasTopBorder: true,
+      hasBottomBorder: true,
       onClick: toggleItem,
       name: "showTimes"
     },
     {
       title: "Exit",
+      hasTopBorder: true,
       onClick: toggleItem,
       name: "showScreensaver"
     }

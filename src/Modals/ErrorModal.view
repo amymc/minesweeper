@@ -57,5 +57,5 @@ onClick <playAgain
 
 Button
 onWhen <isWarning
-text ok
+text OK
 onClick <toggleItem

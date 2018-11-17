@@ -1,28 +1,54 @@
 MenuItem Horizontal
+fontFamily LeviWindows
+fontSize 34
+lineHeight 24px
 onClick <
 name <
 backgroundColor #C1C1C3
 color #000
-width 100
-height 30
-maxWidth 100
+height 34
+paddingLeft 32
+paddingBottom 8
+borderTopWidth 0
+borderTopColor #fff
+borderTopStyle solid
+borderBottomWidth 0
+borderBottomColor #939493
+borderBottomStyle solid
 when <isHovered
 backgroundColor #0016c0
 color #fff
-# Checkmark Vertical
-CheckmarkWhite
-onWhen <isHovered
-width 10
-height 10
-
-CheckmarkBlack
+when <hasTopBorder
+borderTopWidth 1
+when <hasBottomBorder
+borderBottomWidth 2
+Horizontal
 onWhen <isSelected
-width 10
-height 10
-# CheckmarkWhite
-# onWhen <isHovered
-# width 10
-# height 10
+BlackWrapper Horizontal
+position absolute
+left -24px
+top 12px
+zIndex 1
+when <isHovered
+zIndex -1
+CheckmarkBlack
+width 12
+height 12
+
+
+WhiteWrapper Horizontal
+position absolute
+left -24px
+top 12px
+zIndex -1
+when <isHovered
+zIndex 1
+CheckmarkWhite
+width 12
+height 12
+
+
 
 Text
 text <title
+

@@ -20,14 +20,10 @@ export default class MenuLogic extends React.Component {
     this.wrapperRef = node
   }
 
-  /**
-   * Alert if clicked on outside of element
-   */
   handleClickOutside = e => {
     e.stopPropagation()
     if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
-      console.log(this.props)
-      this.props.toggleItem({ currentTarget: { name: "showMenu" } })
+      this.props.toggleItem({ currentTarget: { name: null } })
     }
   }
   render() {

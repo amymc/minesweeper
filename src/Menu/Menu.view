@@ -3,12 +3,15 @@ position absolute
 backgroundColor #C1C1C3
 zIndex 2
 from <
-top 66
+top 62
+width 160
+paddingTop 4
+paddingBottom 4
 borderStyle solid
-borderWidth 4
+borderWidth 2
 borderTopColor #fff
 borderLeftColor #fff
-borderBottomColor #939493
-borderRightColor #939493
+borderBottomColor #000
+borderRightColor #000
 MenuItem
 level <

@@ -9,7 +9,7 @@ export class AppProvider extends React.Component {
     this.state = {
       grid: this.createGrid(boards.beginner),
       time: 0,
-      status: "isStart", // isPlaying hasLost, hasWon
+      status: "isStart", // isPlaying, hasLost, hasWon
       mood: "isHappy", // isScared, isDead, isCool
       level: "beginner", // intermediate, expert
       mines: boards.beginner.mines
@@ -25,7 +25,7 @@ export class AppProvider extends React.Component {
       isRevealed: false,
       isLosingCell: false,
       hasIcon: null, // flag, question
-      neighbour: 0
+      neighbours: 0
     })
 
     const grid = Array(width)
@@ -37,7 +37,7 @@ export class AppProvider extends React.Component {
       )
 
     this.placeMines(grid, mines, height, width)
-    this.getNeighbours(grid, height, width)
+    this.getNeighbouringMines(grid, height, width)
     return grid
   }
 
@@ -81,13 +81,13 @@ export class AppProvider extends React.Component {
     return gridArr
   }
 
-  getNeighbours = (data, height, width) => {
+  getNeighbouringMines = (data, height, width) => {
     let updatedData = data
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
         if (data[i][j].hasMine !== true) {
-          let mine = 0
-          const area = this.traverseBoard(
+          let mines = 0
+          const area = this.getNeighbouringCells(
             data[i][j].x,
             data[i][j].y,
             data,
@@ -96,21 +96,20 @@ export class AppProvider extends React.Component {
           )
           area.forEach(value => {
             if (value.hasMine) {
-              mine++
+              mines++
             }
           })
-          if (mine === 0) {
+          if (mines === 0) {
             updatedData[i][j].isEmpty = true
           }
-          updatedData[i][j].neighbour = mine
+          updatedData[i][j].neighbours = mines
         }
       }
     }
     return updatedData
   }
 
-  // looks for neighbouring cells and returns them
-  traverseBoard(x, y, data, height, width) {
+  getNeighbouringCells(x, y, data, height, width) {
     const coordinates = [
       [x - 1, y],
       [x + 1, y],
@@ -158,7 +157,7 @@ export class AppProvider extends React.Component {
       this.setState({ status: "hasLost" })
     } else if (isEmpty) {
       this.revealEmpty(x, y, updatedGrid)
-      // updatedGrid[x][y].isRevealed = true
+      updatedGrid[x][y].isRevealed = true
     } else {
       updatedGrid[x][y].isRevealed = true
     }
@@ -172,7 +171,7 @@ export class AppProvider extends React.Component {
   }
 
   revealEmpty(x, y, grid) {
-    let area = this.traverseBoard(
+    let cells = this.getNeighbouringCells(
       x,
       y,
       grid,
@@ -180,16 +179,16 @@ export class AppProvider extends React.Component {
       boards[this.state.level].width
     )
 
-    area.forEach(value => {
+    cells.forEach(cell => {
       if (
-        !value.hasIcon &&
-        !value.isRevealed &&
-        (value.isEmpty || !value.hasMine)
+        !cell.hasIcon &&
+        !cell.isRevealed &&
+        (cell.isEmpty || !cell.hasMine)
       ) {
-        grid[value.x][value.y].isRevealed = true
+        grid[cell.x][cell.y].isRevealed = true
 
-        if (value.isEmpty) {
-          this.revealEmpty(value.x, value.y, grid)
+        if (cell.isEmpty) {
+          this.revealEmpty(cell.x, cell.y, grid)
         }
       }
     })
