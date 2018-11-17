@@ -56,11 +56,45 @@ onWhen <shouldShowQuestion
 width 20
 height 20
 
-Count
-# onWhen <!hasMine
-onWhen <shouldShowCount
-text <neighbour
-color <
+One
+onWhen <shouldShowOne
+width 20
+height 20
+
+Two
+onWhen <shouldShowTwo
+width 20
+height 20
+
+Three
+onWhen <shouldShowThree
+width 20
+height 20
+
+Four
+onWhen <shouldShowFour
+width 20
+height 20
+
+Five
+onWhen <shouldShowFive
+width 20
+height 20
+
+Six
+onWhen <shouldShowSix
+width 20
+height 20
+
+Seven
+onWhen <shouldShowSeven
+width 20
+height 20
+
+Eight
+onWhen <shouldShowEight
+width 20
+height 20
 
 X
 onWhen <shouldShowX

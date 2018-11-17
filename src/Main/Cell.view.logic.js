@@ -3,15 +3,7 @@ import Cell from "./Cell.view.js"
 import { AppConsumer } from "../App.context"
 
 class CellLogic extends React.Component {
-  getColor = neighbour =>
-    neighbour === 1
-      ? "#0E00FF"
-      : neighbour === 2
-      ? "#048001"
-      : neighbour === 3
-      ? "#ea3a32"
-      : "#060084"
-
+  componentDidMount = () => {}
   render() {
     const { item } = this.props
 
@@ -23,14 +15,36 @@ class CellLogic extends React.Component {
             onMouseUp={onMouseUp}
             onMouseDown={e => reveal(e, item)}
             onContextMenu={e => placeFlag(e, item)}
-            color={this.getColor(item.neighbour)}
             shouldShowFlag={!item.isRevealed && item.hasIcon === "flag"}
             shouldShowQuestion={!item.isRevealed && item.hasIcon === "question"}
             shouldShowMine={item.isRevealed && item.hasMine}
-            shouldShowCount={
-              item.isRevealed && !item.isEmpty && !item.hasMine && !item.hasIcon
-            }
             shouldShowX={item.isRevealed && item.hasIcon && !item.hasMine}
+            shouldShowOne={item.neighbour === 1 && item.isRevealed}
+            shouldShowTwo={
+              item.neighbour === 2 &&
+              item.isRevealed &&
+              !item.isEmpty &&
+              !item.hasMine &&
+              !item.hasIcon
+            }
+            shouldShowThree={
+              item.neighbour === 3 &&
+              item.isRevealed &&
+              !item.isEmpty &&
+              !item.hasMine &&
+              !item.hasIcon
+            }
+            shouldShowFour={
+              item.neighbour === 4 &&
+              item.isRevealed &&
+              !item.isEmpty &&
+              !item.hasMine &&
+              !item.hasIcon
+            }
+            shouldShowFive={item.neighbour === 5 && item.isRevealed}
+            shouldShowSix={item.neighbour === 6 && item.isRevealed}
+            shouldShowSeven={item.neighbour === 7 && item.isRevealed}
+            shouldShowEight={item.neighbour === 8 && item.isRevealed}
           />
         )}
       </AppConsumer>
