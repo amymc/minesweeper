@@ -58,5 +58,4 @@ onClick <playAgain
 Button
 onWhen <isWarning
 text ok
-# name showHelp
 onClick <toggleItem
