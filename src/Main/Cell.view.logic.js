@@ -27,7 +27,10 @@ class CellLogic extends React.Component {
             shouldShowFlag={!item.isRevealed && item.hasIcon === "flag"}
             shouldShowQuestion={!item.isRevealed && item.hasIcon === "question"}
             shouldShowMine={item.isRevealed && item.hasMine}
-            shouldShowCount={item.isRevealed && !item.isEmpty && !item.hasMine}
+            shouldShowCount={
+              item.isRevealed && !item.isEmpty && !item.hasMine && !item.hasIcon
+            }
+            shouldShowX={item.isRevealed && item.hasIcon && !item.hasMine}
           />
         )}
       </AppConsumer>
