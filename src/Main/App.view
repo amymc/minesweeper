@@ -20,18 +20,25 @@ VideoModal
 onWhen <showVideo
 onClick <toggleItem
 
-ErrorModal
+StandardModal
 onWhen <showHelp
 title Error
-mainMessage You are beyond help
+mainMessage You are beyond help.
 isError true
 
-ErrorModal
+StandardModal
 onWhen <showTimes
 title Best times
 mainMessage At your age don't you think you should have more worthwhile aspirations than getting on a Minesweeper leaderboard?
 secondaryMessage Pathetic.
 isWarning true
+
+StandardModal
+onWhen <showAbout
+title About
+mainMessage Made with Views.
+secondaryMessage You can check out the code at github.com/amymc/minesweeper.
+isAbout true
 
 Screensaver
 onWhen <showScreensaver

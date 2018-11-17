@@ -1,15 +1,15 @@
 import React from "react"
 import { ModalConsumer } from "../Modal.context"
 import { AppConsumer } from "../App.context"
-import ErrorModal from "./ErrorModal.view.js"
+import StandardModal from "./StandardModal.view.js"
 
-const ErrorModalLogic = props => {
+const StandardModalLogic = props => {
   return (
     <AppConsumer>
       {({ reset }) => (
         <ModalConsumer>
           {({ toggleItem }) => (
-            <ErrorModal
+            <StandardModal
               {...props}
               toggleItem={toggleItem}
               playAgain={e => {
@@ -24,4 +24,4 @@ const ErrorModalLogic = props => {
   )
 }
 
-export default ErrorModalLogic
+export default StandardModalLogic

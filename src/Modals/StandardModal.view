@@ -1,4 +1,4 @@
-ErrorModal Horizontal
+StandardModal Horizontal
 position absolute
 width 450
 backgroundColor #C1C1C3
@@ -17,7 +17,7 @@ text <title
 onClick <toggleItem
 isActive true
 
-ErrorWrapper Horizontal
+OuterWrapper Horizontal
 marginTop 20
 marginRight 15
 marginBottom 15
@@ -33,6 +33,11 @@ onWhen <isError
 
 WarningIcon
 onWhen <isWarning
+
+Views
+onWhen <isAbout
+height 40
+width 40
 
 MessageWrapper
 mainMessage <
@@ -56,6 +61,6 @@ text Play again
 onClick <playAgain
 
 Button
-onWhen <isWarning
+onWhen <!isError
 text OK
 onClick <toggleItem

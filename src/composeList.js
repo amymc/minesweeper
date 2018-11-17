@@ -32,6 +32,13 @@ export default ({ reset, switchLevel, toggleItem }) => {
       }
     },
     {
+      title: "About",
+      hasTopBorder: true,
+      hasBottomBorder: true,
+      onClick: toggleItem,
+      name: "showAbout"
+    },
+    {
       title: "Best Times...",
       hasTopBorder: true,
       hasBottomBorder: true,

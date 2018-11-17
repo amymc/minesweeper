@@ -9,6 +9,7 @@ const AppLogic = () => {
         {({ shouldShow, toggleItem }) => (
           <App
             toggleItem={toggleItem}
+            showAbout={shouldShow === "showAbout"}
             showHelp={shouldShow === "showHelp"}
             showMenu={shouldShow === "showMenu"}
             showScreensaver={shouldShow === "showScreensaver"}
