@@ -1,8 +1,5 @@
 MenuBar Horizontal
 marginTop 1
-fontFamily LeviWindows
-fontSize 34
-lineHeight 24px
 Game Horizontal
 onClick <toggleItem
 name showMenu
@@ -17,9 +14,15 @@ backgroundColor #0016c0
 Text
 text G
 textDecoration underline
+fontFamily LeviWindows
+fontSize 34
+lineHeight 24px
 
 Text
 text ame
+fontFamily LeviWindows
+fontSize 34
+lineHeight 24px
 
 
 Help Horizontal
@@ -36,6 +39,12 @@ backgroundColor #0016c0
 Text
 text H
 textDecoration underline
+fontFamily LeviWindows
+fontSize 34
+lineHeight 24px
 
 Text
 text elp
+fontFamily LeviWindows
+fontSize 34
+lineHeight 24px

@@ -38,6 +38,7 @@ Views
 onWhen <isAbout
 height 40
 width 40
+marginRight 10
 
 MessageWrapper
 mainMessage <
@@ -61,6 +62,12 @@ text Play again
 onClick <playAgain
 
 Button
-onWhen <!isError
+onWhen <isWarning
 text OK
 onClick <toggleItem
+
+LinkTo
+onWhen <isAbout
+goTo http://github.com/amymc/minesweeper
+text Check out the code
+

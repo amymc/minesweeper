@@ -17,7 +17,7 @@ onWhen <hasIcon
 
 Title Text
 fontFamily LeviWindows
-fontWeight 700
+fontWeight 400
 fontSize 30
 letterSpacing 1.7
 color #FFF

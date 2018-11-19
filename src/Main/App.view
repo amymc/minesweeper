@@ -37,7 +37,6 @@ StandardModal
 onWhen <showAbout
 title About
 mainMessage Made with Views.
-secondaryMessage You can check out the code at github.com/amymc/minesweeper.
 isAbout true
 
 Screensaver
