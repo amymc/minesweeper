@@ -19,14 +19,30 @@ class CellLogic extends React.Component {
             shouldShowQuestion={!item.isRevealed && item.hasIcon === "question"}
             shouldShowMine={item.isRevealed && item.hasMine}
             shouldShowX={item.isRevealed && !!item.hasIcon && !item.hasMine}
-            shouldShowOne={item.neighbours === 1 && item.isRevealed}
-            shouldShowTwo={item.neighbours === 2 && item.isRevealed}
-            shouldShowThree={item.neighbours === 3 && item.isRevealed}
-            shouldShowFour={item.neighbours === 4 && item.isRevealed}
-            shouldShowFive={item.neighbours === 5 && item.isRevealed}
-            shouldShowSix={item.neighbours === 6 && item.isRevealed}
-            shouldShowSeven={item.neighbours === 7 && item.isRevealed}
-            shouldShowEight={item.neighbours === 8 && item.isRevealed}
+            shouldShowOne={
+              item.neighbours === 1 && item.isRevealed && !item.hasIcon
+            }
+            shouldShowTwo={
+              item.neighbours === 2 && item.isRevealed && !item.hasIcon
+            }
+            shouldShowThree={
+              item.neighbours === 3 && item.isRevealed && !item.hasIcon
+            }
+            shouldShowFour={
+              item.neighbours === 4 && item.isRevealed && !item.hasIcon
+            }
+            shouldShowFive={
+              item.neighbours === 5 && item.isRevealed && !item.hasIcon
+            }
+            shouldShowSix={
+              item.neighbours === 6 && item.isRevealed && !item.hasIcon
+            }
+            shouldShowSeven={
+              item.neighbours === 7 && item.isRevealed && !item.hasIcon
+            }
+            shouldShowEight={
+              item.neighbours === 8 && item.isRevealed && !item.hasIcon
+            }
           />
         )}
       </AppConsumer>
