@@ -8,8 +8,8 @@ self.__precacheManifest = [
     "url": "/minesweeper/static/media/LeviWindows-400.c7d73ffa.ttf"
   },
   {
-    "revision": "58045dabdc3a361cb9bb9faf2f1dd1f3",
-    "url": "/minesweeper/static/media/DigitMono-400.58045dab.ttf"
+    "revision": "1e124ae99f4eab28549b769c22206afc",
+    "url": "/minesweeper/static/media/DigitTest-400.1e124ae9.ttf"
   },
   {
     "revision": "a6561c9c22996ab3381ae1d65df8cc3b",
@@ -20,19 +20,19 @@ self.__precacheManifest = [
     "url": "/minesweeper/static/js/runtime~main.e96a4862.js"
   },
   {
-    "revision": "59a7a6a486cead4b7bd2",
-    "url": "/minesweeper/static/js/main.59a7a6a4.chunk.js"
+    "revision": "d83f77b8e9e5463af254",
+    "url": "/minesweeper/static/js/main.d83f77b8.chunk.js"
   },
   {
     "revision": "42b019473547e6fbc487",
     "url": "/minesweeper/static/js/1.42b01947.chunk.js"
   },
   {
-    "revision": "59a7a6a486cead4b7bd2",
+    "revision": "d83f77b8e9e5463af254",
     "url": "/minesweeper/static/css/main.ae21e02c.chunk.css"
   },
   {
-    "revision": "1f57c1fd44d6dde5534e32608ade67ee",
+    "revision": "47f9443f5fc66ad311313ac50269f8f8",
     "url": "/minesweeper/index.html"
   }
 ];

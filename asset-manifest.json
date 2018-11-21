@@ -1,17 +1,17 @@
 {
   "main.css": "/minesweeper/static/css/main.ae21e02c.chunk.css",
-  "main.js": "/minesweeper/static/js/main.59a7a6a4.chunk.js",
-  "main.js.map": "/minesweeper/static/js/main.59a7a6a4.chunk.js.map",
+  "main.js": "/minesweeper/static/js/main.d83f77b8.chunk.js",
+  "main.js.map": "/minesweeper/static/js/main.d83f77b8.chunk.js.map",
   "static/js/1.42b01947.chunk.js": "/minesweeper/static/js/1.42b01947.chunk.js",
   "static/js/1.42b01947.chunk.js.map": "/minesweeper/static/js/1.42b01947.chunk.js.map",
   "runtime~main.js": "/minesweeper/static/js/runtime~main.e96a4862.js",
   "runtime~main.js.map": "/minesweeper/static/js/runtime~main.e96a4862.js.map",
   "static/media/Maze.gif": "/minesweeper/static/media/Maze.53e4c25b.gif",
   "static/media/CryBaby.gif": "/minesweeper/static/media/CryBaby.a6561c9c.gif",
-  "static/media/DigitMono-400.ttf": "/minesweeper/static/media/DigitMono-400.58045dab.ttf",
+  "static/media/DigitTest-400.ttf": "/minesweeper/static/media/DigitTest-400.1e124ae9.ttf",
   "static/media/LeviWindows-400.ttf": "/minesweeper/static/media/LeviWindows-400.c7d73ffa.ttf",
   "static/css/main.ae21e02c.chunk.css.map": "/minesweeper/static/css/main.ae21e02c.chunk.css.map",
   "index.html": "/minesweeper/index.html",
-  "precache-manifest.5016804aaab2c3158f2e6a1d40da8aa4.js": "/minesweeper/precache-manifest.5016804aaab2c3158f2e6a1d40da8aa4.js",
+  "precache-manifest.d72ebb3d2dd8d1389315ac0b98cd9180.js": "/minesweeper/precache-manifest.d72ebb3d2dd8d1389315ac0b98cd9180.js",
   "service-worker.js": "/minesweeper/service-worker.js"
 }
