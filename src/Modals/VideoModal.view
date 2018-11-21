@@ -2,13 +2,13 @@ VideoModal Horizontal
 position absolute
 width 479
 height 324
+overflowY hidden
 borderWidth 2
 borderStyle solid
 borderColor #000
 flexDirection column
 backgroundColor #C1C1C3
 zIndex 2
-overflowY auto
 alignItems center
 TitleBar
 text Cry baby
