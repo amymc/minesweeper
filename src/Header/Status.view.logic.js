@@ -2,22 +2,15 @@ import Status from './Status.view.js'
 import React, { useState } from 'react'
 
 let StatusLogic = props => {
-  let [state, setState] = useState({
-    isPressed: false,
-  })
+  let [isPressed, setIsPressed] = useState(false)
 
-  let onMouseDown = () => {
-    setState({ isPressed: true })
-  }
-
-  let onMouseUp = () => {
-    setState({ isPressed: false })
-  }
+  let onMouseDown = () => setIsPressed(true)
+  let onMouseUp = () => setIsPressed(false)
 
   return (
     <Status
       {...props}
-      isPressed={state.isPressed}
+      isPressed={isPressed}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
     />
