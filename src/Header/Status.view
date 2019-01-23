@@ -16,8 +16,8 @@ borderBottomColor #1A161A
 borderRightColor #1A161A
 alignItems center
 onClick <
-onMouseDown <toggleState
-onMouseUp <toggleState
+onMouseDown <
+onMouseUp <
 when <isPressed
 borderTopColor #1A161A
 borderLeftColor #1A161A
