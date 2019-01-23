@@ -2,16 +2,9 @@ import Status from './Status.view.js'
 import React, { useState } from 'react'
 
 let StatusLogic = props => {
-  let { isPressed, onMouseDown, onMouseUp } = usePressed()
+  let pressed = usePressed()
 
-  return (
-    <Status
-      {...props}
-      isPressed={isPressed}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-    />
-  )
+  return <Status {...props} {...pressed} />
 }
 
 export default StatusLogic
