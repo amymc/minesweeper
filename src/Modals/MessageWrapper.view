@@ -2,13 +2,19 @@ MessageWrapper Horizontal
 flexDirection column
 marginLeft 10
 flexShrink 1
-lineHeight 1.3
 marginLeft 10
 width 85%
 MainMessage Text
+fontFamily LeviWindows
+fontWeight 400
+lineHeight 0.7
+fontSize 30
 text <mainMessage
 
 SecondaryMessage Text
 onWhen <secondaryMessage
 marginTop 14
+fontFamily LeviWindows
+fontWeight 400
+fontSize 30
 text <secondaryMessage

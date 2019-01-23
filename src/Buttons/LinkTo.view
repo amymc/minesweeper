@@ -16,7 +16,6 @@ minWidth 80
 alignContent center
 justifyContent center
 height 30
-lineHeight 1.6
 name <
 goTo <
 when <isHovered
@@ -24,5 +23,8 @@ borderWidth 2
 borderStyle solid
 borderColor #7a7a7a
 Text
-fontSize 14
+fontFamily LeviWindows
+fontWeight 400
+fontSize 30
+lineHeight 0.5
 text <
