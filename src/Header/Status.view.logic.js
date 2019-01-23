@@ -6,8 +6,12 @@ export default class StatusLogic extends React.Component {
     isPressed: false
   }
 
-  toggleState = () => {
-    this.setState({ isPressed: !this.state.isPressed })
+  onMouseDown = () => {
+    this.setState({ isPressed: true })
+  }
+
+  onMouseUp = () => {
+    this.setState({ isPressed: false })
   }
 
   render() {
@@ -16,7 +20,8 @@ export default class StatusLogic extends React.Component {
       <Status
         {...props}
         isPressed={state.isPressed}
-        toggleState={this.toggleState}
+        onMouseDown={this.onMouseDown}
+        onMouseUp={this.onMouseUp}
       />
     )
   }
