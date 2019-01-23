@@ -1,28 +1,27 @@
-import Status from "./Status.view.js"
-import React from "react"
+import Status from './Status.view.js'
+import React, { useState } from 'react'
 
-export default class StatusLogic extends React.Component {
-  state = {
-    isPressed: false
+let StatusLogic = props => {
+  let [state, setState] = useState({
+    isPressed: false,
+  })
+
+  let onMouseDown = () => {
+    setState({ isPressed: true })
   }
 
-  onMouseDown = () => {
-    this.setState({ isPressed: true })
+  let onMouseUp = () => {
+    setState({ isPressed: false })
   }
 
-  onMouseUp = () => {
-    this.setState({ isPressed: false })
-  }
-
-  render() {
-    const { props, state } = this
-    return (
-      <Status
-        {...props}
-        isPressed={state.isPressed}
-        onMouseDown={this.onMouseDown}
-        onMouseUp={this.onMouseUp}
-      />
-    )
-  }
+  return (
+    <Status
+      {...props}
+      isPressed={state.isPressed}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+    />
+  )
 }
+
+export default StatusLogic
