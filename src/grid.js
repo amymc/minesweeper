@@ -1,3 +1,5 @@
+import boards from './boardsConfig.js'
+
 export let createGrid = ({ height, width, mines }) => {
   const cell = (i, j) => ({
     x: i,
@@ -64,7 +66,7 @@ let getNeighbouringMines = (data, height, width) => {
   return updatedData
 }
 
-export let getNeighbouringCells = (x, y, data, height, width) => {
+let getNeighbouringCells = (x, y, data, height, width) => {
   const coordinates = [
     [x - 1, y],
     [x + 1, y],
@@ -87,3 +89,25 @@ export let getNeighbouringCells = (x, y, data, height, width) => {
 // https://alligator.io/js/flat-flatmap
 export let getHiddenCells = grid =>
   grid.map(row => row.filter(item => !item.isRevealed)).flat()
+
+export let revealEmptyCells = (x, y, grid, level) => {
+  let cells = getNeighbouringCells(
+    x,
+    y,
+    grid,
+    boards[level].height,
+    boards[level].width
+  )
+
+  cells.forEach(cell => {
+    if (!cell.hasIcon && !cell.isRevealed && (cell.isEmpty || !cell.hasMine)) {
+      grid[cell.x][cell.y].isRevealed = true
+
+      if (cell.isEmpty) {
+        revealEmptyCells(cell.x, cell.y, grid, level)
+      }
+    }
+  })
+}
+
+export let cloneGrid = grid => JSON.parse(JSON.stringify(grid))
