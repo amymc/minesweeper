@@ -1,9 +1,11 @@
-import React from "react"
+import React, { useContext } from 'react'
 
-const ModalContext = React.createContext()
+export const ModalContext = React.createContext()
+export let useModal = () => useContext(ModalContext)
+
 export class ModalProvider extends React.Component {
   state = {
-    shouldShow: null //showHelp, showMenu, showScreensaver, showTimes, showVideo
+    shouldShow: null, //showHelp, showMenu, showScreensaver, showTimes, showVideo
   }
 
   toggleItem = e => {
@@ -17,7 +19,7 @@ export class ModalProvider extends React.Component {
       <ModalContext.Provider
         value={{
           toggleItem: this.toggleItem,
-          shouldShow: state.shouldShow
+          shouldShow: state.shouldShow,
         }}
       >
         {props.children}
