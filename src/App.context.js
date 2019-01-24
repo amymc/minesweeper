@@ -1,4 +1,4 @@
-import { createGrid, getNeighbouringCells } from './grid.js'
+import { createGrid, getHiddenCells, getNeighbouringCells } from './grid.js'
 import React from 'react'
 import boards from './boardsConfig.js'
 
@@ -17,9 +17,9 @@ export class AppProvider extends React.Component {
     }
   }
 
-  placeFlag = (e, { x, y }) => {
+  placeFlag = (event, { x, y }) => {
     if (this.state.status === 'hasLost') return
-    e.preventDefault()
+    event.preventDefault()
 
     const column = JSON.parse(JSON.stringify(this.state.grid[x]))
     let mines = this.state.mines
@@ -44,21 +44,22 @@ export class AppProvider extends React.Component {
     })
   }
 
-  onMouseUp = () => {
-    const mood =
-      this.state.status === 'hasLost'
-        ? 'isDead'
-        : this.state.status === 'hasWon'
-        ? 'isCool'
-        : 'isHappy'
-    this.setState({ mood })
+  getScared = event => {
+    if (this.state.status === 'hasLost') return
+
+    this.setState({ mood: 'isScared' })
   }
 
-  reveal = (e, { x, y, hasMine, isEmpty }) => {
-    //dont reveal on right-click
-    if (e.nativeEvent.which === 3 || this.state.status === 'hasLost') return
+  getHappy = event => {
+    if (this.state.status === 'hasLost') return
+
+    this.setState({ mood: 'isHappy' })
+  }
+
+  reveal = (event, { x, y, hasMine, isEmpty }) => {
+    if (this.state.status === 'hasLost') return
+
     let updatedGrid = JSON.parse(JSON.stringify(this.state.grid))
-    this.setState({ mood: 'isScared' })
 
     if (this.state.status === 'isStart') {
       this.setState({ status: 'isPlaying' })
@@ -69,7 +70,7 @@ export class AppProvider extends React.Component {
       updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
       updatedGrid[x][y].isLosingCell = true
       clearInterval(this.interval)
-      this.setState({ status: 'hasLost' })
+      this.setState({ status: 'hasLost', mood: 'isDead' })
     } else if (isEmpty) {
       this.revealEmpty(x, y, updatedGrid)
       updatedGrid[x][y].isRevealed = true
@@ -77,11 +78,11 @@ export class AppProvider extends React.Component {
       updatedGrid[x][y].isRevealed = true
     }
 
-    if (this.getHidden(updatedGrid).length === this.state.mines) {
+    if (getHiddenCells(updatedGrid).length === this.state.mines) {
       clearInterval(this.interval)
-      this.setState({ status: 'hasWon' })
+      this.setState({ status: 'hasWon', mood: 'isCool' })
     } else {
-      this.setState({ grid: updatedGrid })
+      this.setState({ grid: updatedGrid, mood: hasMine ? 'isDead' : 'isHappy' })
     }
   }
 
@@ -110,9 +111,6 @@ export class AppProvider extends React.Component {
     return grid
   }
 
-  getHidden = data =>
-    data.map(datarow => datarow.filter(dataitem => !dataitem.isRevealed)).flat()
-
   reset = () => {
     this.setState({
       grid: createGrid(boards[this.state.level]),
@@ -140,7 +138,8 @@ export class AppProvider extends React.Component {
           placeFlag: this.placeFlag,
           reset: this.reset,
           reveal: this.reveal,
-          onMouseUp: this.onMouseUp,
+          getHappy: this.getHappy,
+          getScared: this.getScared,
           switchLevel: this.switchLevel,
           level: state.level,
           mood: state.mood,

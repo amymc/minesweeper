@@ -1,6 +1,7 @@
 * {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  user-select: none;
 }
 html,
 body,
