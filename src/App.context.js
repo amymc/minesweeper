@@ -1,4 +1,9 @@
-import { createGrid, getHiddenCells, getNeighbouringCells } from './grid.js'
+import {
+  cloneGrid,
+  createGrid,
+  getHiddenCells,
+  revealEmptyCells,
+} from './grid.js'
 import React from 'react'
 import boards from './boardsConfig.js'
 
@@ -21,7 +26,7 @@ export class AppProvider extends React.Component {
     if (this.state.status === 'hasLost') return
     event.preventDefault()
 
-    const column = JSON.parse(JSON.stringify(this.state.grid[x]))
+    const column = cloneGrid(this.state.grid[x])
     let mines = this.state.mines
 
     if (column[y].hasIcon === 'question') {
@@ -59,7 +64,7 @@ export class AppProvider extends React.Component {
   reveal = (event, { x, y, hasMine, isEmpty }) => {
     if (this.state.status === 'hasLost') return
 
-    let updatedGrid = JSON.parse(JSON.stringify(this.state.grid))
+    let updatedGrid = cloneGrid(this.state.grid)
 
     if (this.state.status === 'isStart') {
       this.setState({ status: 'isPlaying' })
@@ -72,7 +77,7 @@ export class AppProvider extends React.Component {
       clearInterval(this.interval)
       this.setState({ status: 'hasLost', mood: 'isDead' })
     } else if (isEmpty) {
-      this.revealEmpty(x, y, updatedGrid)
+      revealEmptyCells(x, y, updatedGrid, this.state.level)
       updatedGrid[x][y].isRevealed = true
     } else {
       updatedGrid[x][y].isRevealed = true
@@ -84,31 +89,6 @@ export class AppProvider extends React.Component {
     } else {
       this.setState({ grid: updatedGrid, mood: hasMine ? 'isDead' : 'isHappy' })
     }
-  }
-
-  revealEmpty(x, y, grid) {
-    let cells = getNeighbouringCells(
-      x,
-      y,
-      grid,
-      boards[this.state.level].height,
-      boards[this.state.level].width
-    )
-
-    cells.forEach(cell => {
-      if (
-        !cell.hasIcon &&
-        !cell.isRevealed &&
-        (cell.isEmpty || !cell.hasMine)
-      ) {
-        grid[cell.x][cell.y].isRevealed = true
-
-        if (cell.isEmpty) {
-          this.revealEmpty(cell.x, cell.y, grid)
-        }
-      }
-    })
-    return grid
   }
 
   reset = () => {
