@@ -83,3 +83,7 @@ export let getNeighbouringCells = (x, y, data, height, width) => {
 
   return filteredCoordinates.map(coord => data[coord[0]][coord[1]])
 }
+
+// https://alligator.io/js/flat-flatmap
+export let getHiddenCells = grid =>
+  grid.map(row => row.filter(item => !item.isRevealed)).flat()
