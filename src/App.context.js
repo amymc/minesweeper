@@ -1,136 +1,126 @@
-import {
-  cloneGrid,
-  createGrid,
-  getHiddenCells,
-  revealEmptyCells,
-} from './grid.js'
-import React from 'react'
-import boards from './boardsConfig.js'
+import { initialise, placeFlag, reveal } from './grid.js'
+import React, { useContext, useEffect, useReducer, useRef } from 'react'
 
-const AppContext = React.createContext()
+export let AppContext = React.createContext()
+export let useApp = () => useContext(AppContext)
 
-export class AppProvider extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      grid: createGrid(boards.beginner),
-      time: 0,
-      status: 'isStart', // isPlaying, hasLost, hasWon
-      mood: 'isHappy', // isScared, isDead, isCool
-      level: 'beginner', // intermediate, expert
-      mines: boards.beginner.mines,
-    }
+let PLACE_FLAG = 'placeFlag'
+let GET_SCARED = 'getScared'
+let GET_HAPPY = 'getHappy'
+let REVEAL = 'reveal'
+let SWITCH_LEVEL = 'switchLevel'
+let RESET = 'reset'
+let TICK = 'tick'
+
+let reducer = (state, action) => {
+  switch (action.type) {
+    case PLACE_FLAG:
+      return {
+        ...state,
+        ...placeFlag(state, action),
+      }
+
+    case GET_SCARED:
+      return { ...state, mood: 'isScared' }
+
+    case GET_HAPPY:
+      return { ...state, mood: 'isHappy' }
+
+    case REVEAL:
+      return { ...state, ...reveal(state, action) }
+
+    case SWITCH_LEVEL:
+      return initialise(action.level)
+
+    case RESET:
+      return initialise(state.level)
+
+    case TICK:
+      return { ...state, time: state.time + 1 }
+
+    default:
+      return state
   }
+}
 
-  placeFlag = (event, { x, y }) => {
-    if (this.state.status === 'hasLost') return
+export let AppProvider = props => {
+  let [state, dispatch] = useReducer(reducer, initialise())
+
+  let interval = useRef()
+  useEffect(() => {
+    if (state.status === 'isPlaying') {
+      interval.current = setInterval(tick, 1000)
+    }
+
+    return () => interval.current && clearInterval(interval.current)
+  }, [state.status])
+
+  let placeFlag = (event, { x, y }) => {
+    if (state.status === 'hasLost') return
+
     event.preventDefault()
 
-    const column = cloneGrid(this.state.grid[x])
-    let mines = this.state.mines
-
-    if (column[y].hasIcon === 'question') {
-      column[y].hasIcon = null
-    } else if (column[y].hasIcon === 'flag') {
-      column[y].hasIcon = 'question'
-      mines++
-    } else {
-      column[y].hasIcon = 'flag'
-      mines--
-    }
-
-    this.setState({
-      grid: [
-        ...this.state.grid.slice(0, x),
-        column,
-        ...this.state.grid.slice(x + 1),
-      ],
-      mines,
+    dispatch({
+      type: PLACE_FLAG,
+      x,
+      y,
     })
   }
 
-  getScared = event => {
-    if (this.state.status === 'hasLost') return
+  let getScared = event => {
+    if (state.status === 'hasLost') return
 
-    this.setState({ mood: 'isScared' })
+    dispatch({ type: GET_SCARED })
   }
 
-  getHappy = event => {
-    if (this.state.status === 'hasLost') return
+  let getHappy = event => {
+    if (state.status === 'hasLost') return
 
-    this.setState({ mood: 'isHappy' })
+    dispatch({ type: GET_HAPPY })
   }
 
-  reveal = (event, { x, y, hasMine, isEmpty }) => {
-    if (this.state.status === 'hasLost') return
+  let reveal = (event, { x, y, hasMine, isEmpty }) => {
+    if (state.status === 'hasLost') return
 
-    let updatedGrid = cloneGrid(this.state.grid)
-
-    if (this.state.status === 'isStart') {
-      this.setState({ status: 'isPlaying' })
-      this.interval = setInterval(this.tick.bind(this), 1000)
-    }
-
-    if (hasMine) {
-      updatedGrid.map(column => column.map(cell => (cell.isRevealed = true)))
-      updatedGrid[x][y].isLosingCell = true
-      clearInterval(this.interval)
-      this.setState({ status: 'hasLost', mood: 'isDead' })
-    } else if (isEmpty) {
-      revealEmptyCells(x, y, updatedGrid, this.state.level)
-      updatedGrid[x][y].isRevealed = true
-    } else {
-      updatedGrid[x][y].isRevealed = true
-    }
-
-    if (getHiddenCells(updatedGrid).length === this.state.mines) {
-      clearInterval(this.interval)
-      this.setState({ status: 'hasWon', mood: 'isCool' })
-    } else {
-      this.setState({ grid: updatedGrid, mood: hasMine ? 'isDead' : 'isHappy' })
-    }
-  }
-
-  reset = () => {
-    this.setState({
-      grid: createGrid(boards[this.state.level]),
-      mines: boards[this.state.level].mines,
-      mood: 'isHappy',
-      status: 'isStart',
-      time: 0,
+    dispatch({
+      type: REVEAL,
+      x,
+      y,
+      hasMine,
+      isEmpty,
     })
-    clearInterval(this.interval)
   }
 
-  switchLevel = level => {
-    this.setState({ level }, this.reset)
+  let reset = () => {
+    dispatch({ type: RESET })
   }
 
-  tick = () => {
-    this.setState({ time: this.state.time + 1 })
+  let switchLevel = level => {
+    dispatch({ type: SWITCH_LEVEL, level })
   }
 
-  render() {
-    const { props, state } = this
-    return (
-      <AppContext.Provider
-        value={{
-          placeFlag: this.placeFlag,
-          reset: this.reset,
-          reveal: this.reveal,
-          getHappy: this.getHappy,
-          getScared: this.getScared,
-          switchLevel: this.switchLevel,
-          level: state.level,
-          mood: state.mood,
-          grid: state.grid,
-          mines: state.mines,
-          time: state.time,
-        }}
-      >
-        {props.children}
-      </AppContext.Provider>
-    )
+  let tick = () => {
+    dispatch({ type: TICK })
   }
+
+  return (
+    <AppContext.Provider
+      value={{
+        placeFlag,
+        reset,
+        reveal,
+        getHappy,
+        getScared,
+        switchLevel,
+        level: state.level,
+        mood: state.mood,
+        grid: state.grid,
+        mines: state.mines,
+        time: state.time,
+      }}
+    >
+      {props.children}
+    </AppContext.Provider>
+  )
 }
 export const AppConsumer = AppContext.Consumer

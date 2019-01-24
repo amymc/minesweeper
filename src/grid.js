@@ -111,3 +111,60 @@ export let revealEmptyCells = (x, y, grid, level) => {
 }
 
 export let cloneGrid = grid => JSON.parse(JSON.stringify(grid))
+
+export let placeFlag = ({ grid, mines }, { x, y }) => {
+  let column = cloneGrid(grid[x])
+
+  if (column[y].hasIcon === 'question') {
+    column[y].hasIcon = null
+  } else if (column[y].hasIcon === 'flag') {
+    column[y].hasIcon = 'question'
+    mines++
+  } else {
+    column[y].hasIcon = 'flag'
+    mines--
+  }
+
+  return {
+    grid: [...grid.slice(0, x), column, ...grid.slice(x + 1)],
+    mines,
+  }
+}
+
+export let reveal = (state, { x, y, hasMine, isEmpty }) => {
+  let grid = cloneGrid(state.grid)
+  let status = 'isPlaying'
+  let mood = 'isHappy'
+
+  if (hasMine) {
+    grid.map(column => column.map(cell => (cell.isRevealed = true)))
+    grid[x][y].isLosingCell = true
+    status = 'hasLost'
+    mood = 'isDead'
+  } else if (isEmpty) {
+    revealEmptyCells(x, y, grid, state.level)
+    grid[x][y].isRevealed = true
+  } else {
+    grid[x][y].isRevealed = true
+  }
+
+  if (getHiddenCells(grid).length === state.mines) {
+    status = 'hasWon'
+    mood = 'isCool'
+  }
+
+  return {
+    status,
+    grid,
+    mood,
+  }
+}
+
+export let initialise = (level = 'beginner') => ({
+  grid: createGrid(boards[level]),
+  mines: boards[level].mines,
+  mood: 'isHappy',
+  status: 'isStart',
+  time: 0,
+  level,
+})
